@@ -1,7 +1,11 @@
 .side_bar { 
 	width: 250px;
-	padding: 4vh 0;
+	padding: 4vh calc(250px * 0.07) 2.5vh calc(250px * 0.07);
 	background-color: var(--color-primary);
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
 }
 
 .logo { 
@@ -12,7 +16,13 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
-
-	padding: 0 1.2rem;
 	margin-top: 15%;
 }
+
+.user_container { 
+	border-radius: 0.75rem;
+	padding: 1rem;
+	margin-top: auto;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+

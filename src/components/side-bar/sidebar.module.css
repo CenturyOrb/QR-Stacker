@@ -1,0 +1,18 @@
+.side_bar { 
+	width: 250px;
+	padding: 4vh 0;
+	background-color: var(--color-primary);
+}
+
+.logo { 
+	text-align: center;
+}
+
+.nav { 
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+
+	padding: 0 1.2rem;
+	margin-top: 15%;
+}

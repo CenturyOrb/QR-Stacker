@@ -2,7 +2,7 @@ import styles from './main.module.css'
 
 const Main = () => {
 	return(
-		<main>
+		<main className={styles.main}>
 		</main>
 	);
 }

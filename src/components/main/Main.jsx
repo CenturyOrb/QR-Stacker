@@ -1,13 +1,15 @@
+import { useContext } from 'react'
 import styles from './main.module.css'
+import { ViewContext } from '../../App.jsx'
 
 import DashboardSummary from './dashboard/DashboardSummary.jsx'
-import QRCodeGenerator from '../qrcode/QRCodeGenerator.jsx'
 
 const Main = () => {
+	const { view, setView } = useContext(ViewContext);
+	
 	return(
 		<main className={styles.main}>
 			<DashboardSummary />
-			<QRCodeGenerator text={'hi'}/>
 		</main>
 	);
 }

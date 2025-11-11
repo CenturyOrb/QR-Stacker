@@ -8,6 +8,7 @@ model Item {
   createdAt DateTime @default(now())
   name      String   @db.VarChar(255)
   description   String?
+  price		Float
 
   @@map("items")
 }

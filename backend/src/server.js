@@ -3,6 +3,8 @@ import morgan from 'morgan'
 const app = express();
 const port = 3000; // this should be set in .env later
 
+import itemRoutes from './routes/itemRoutes.js'
+
 // middleware to parse form data and http req body data to req.body
 app.use(
 	morgan('tiny'),
@@ -11,9 +13,7 @@ app.use(
 );
 
 // routes
-app.get('/api/inventory', (req, res, next) => {
-  	res.send('Show all inventory');
-})
+app.use('/api/item', itemRoutes);
 
 // error handling for non existent route, this is still a regular middleware
 app.use((req, res, next) => { 
@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 // https://expressjs.com/en/guide/error-handling.html
 app.use((err, req, res, next) => { 
 	console.log(err.stack);
-	if (!err.stack) { 
+	if (!err.stack || !err.status) { 
 		err.status = 500;
 		err.message = 'Internal Server Error';
 	}

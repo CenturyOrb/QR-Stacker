@@ -1,11 +1,18 @@
 import express from 'express'
-import { getAllItemsHandler } from '../controllers/itemController.js'
+import { getAllItemsHandler, createItemHandler, updateItemHandler, deleteItemHandler } from '../controllers/itemController.js'
 
 const router = express.Router();
 
-// all items
-router.get('/', getAllPostsHandler);
+// create item
+router.post('/', createItemHandler);
 
-// all items of specific user
+// all items
+router.get('/', getAllItemsHandler);
+
+// update item
+router.put('/:id', updateItemHandler);
+
+// delete item
+router.delete('/:id', deleteItemHandler);
 
 export default router;

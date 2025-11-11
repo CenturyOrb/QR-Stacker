@@ -1,5 +1,24 @@
-import { getAllItems } from '../services/itemService.js'
+import { getAllItems, createItem, updateItem, deleteItem } from '../services/itemService.js'
 
-export async function getAllItemHandler(req, res) { 
-	return await getAllItems();
+export async function getAllItemsHandler(req, res) { 
+	const result = await getAllItems();
+	res.status(200).json(result);
 }
+
+export async function createItemHandler(req, res) { 
+	const newItem = await createItem(req.body);
+	res.status(201).json(newItem);
+}
+
+export async function updateItemHandler(req, res) { 
+	const data = req.body;
+	const id = parseInt(req.params.id);
+	const updatedItem = await updateItem(id, data);
+	res.status(200).json(updatedItem);
+}
+
+export async function deleteItemHandler(req, res) { 
+	const id = parseInt(req.params.id);
+	await deleteItem(id);
+	res.status(204).send();
+};

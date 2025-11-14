@@ -1,4 +1,5 @@
 import { createContext, useState} from 'react'
+import { Routes, Route } from 'react-router-dom';
 import styles from './app.module.css'
 import SideBar from './components/side-bar/SideBar.jsx'
 import Main from './components/main/Main.jsx'
@@ -20,7 +21,9 @@ function App() {
 		<div className={styles.app}>
 			<ViewContext.Provider value={{view, setView}}>
 				<SideBar />
-				<Main />
+				<Routes>
+          			<Route path="/" element={<Main />} />
+        		</Routes>
 			</ViewContext.Provider>
 		</div> 
 	);

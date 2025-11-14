@@ -26,3 +26,8 @@ model Container {
 
   @@map("containers")
 }
+
+model User { 
+  id		Int		@id default(autoincrement())
+  name 		String
+}

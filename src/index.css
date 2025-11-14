@@ -24,9 +24,25 @@ button:hover, a:hover {
 	cursor: pointer;	
 }
 
-a {
-  text-decoration: none;
-}
+<!--
+Source - https://stackoverflow.com/a
+
+Posted by Andreas Wong
+
+Retrieved 2025-11-14, License - CC BY-SA 3.0
+-->
+
+
+
+a { color:red } /* Globally */
+
+/* Each state */
+
+a { text-decoration: none; }
+a:visited { text-decoration: none; color:inherit; }
+a:hover { text-decoration: none; color:inherit; }
+a:focus { text-decoration: none; color:inherit; }
+a:hover, a:active { text-decoration: none; color:inherit }
 
 button,
 input,

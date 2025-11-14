@@ -35,6 +35,7 @@ const SideBar = () => {
 					))}
 				</ul>
 			</nav>
+
 			<div className={styles.user_container}> 
 				John Doe	
 			</div>

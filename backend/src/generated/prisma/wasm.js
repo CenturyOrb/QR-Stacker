@@ -98,7 +98,12 @@ exports.Prisma.ItemScalarFieldEnum = {
   createdAt: 'createdAt',
   name: 'name',
   description: 'description',
-  price: 'price'
+  price: 'price',
+  containerId: 'containerId'
+};
+
+exports.Prisma.ContainerScalarFieldEnum = {
+  id: 'id'
 };
 
 exports.Prisma.SortOrder = {
@@ -118,7 +123,8 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Item: 'Item'
+  Item: 'Item',
+  Container: 'Container'
 };
 /**
  * Create the Client
@@ -149,7 +155,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
@@ -159,7 +165,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -168,13 +173,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Item {\n  id          Int      @id @default(autoincrement())\n  createdAt   DateTime @default(now())\n  name        String   @db.VarChar(255)\n  description String?\n  price       Float\n\n  @@map(\"items\")\n}\n",
-  "inlineSchemaHash": "3705895886a6513198e96364b1e5d4c2f6cec2a6b986b3d63a4f1ba42091c00a",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Item {\n  id          Int        @id @default(autoincrement())\n  createdAt   DateTime   @default(now())\n  name        String     @db.VarChar(255)\n  description String?\n  price       Float\n  containerId Int?       @map(\"container_id\")\n  container   Container? @relation(fields: [containerId], references: [id])\n\n  @@map(\"items\")\n}\n\nmodel Container {\n  id    Int    @id @default(autoincrement())\n  items Item[]\n\n  @@map(\"containers\")\n}\n",
+  "inlineSchemaHash": "28e903aa55e9c3405f4a3db128876528e06df2b1c684adb02ce85f20c18c5c1b",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Item\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Float\"}],\"dbName\":\"items\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Item\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"containerId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"container_id\"},{\"name\":\"container\",\"kind\":\"object\",\"type\":\"Container\",\"relationName\":\"ContainerToItem\"}],\"dbName\":\"items\"},\"Container\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"items\",\"kind\":\"object\",\"type\":\"Item\",\"relationName\":\"ContainerToItem\"}],\"dbName\":\"containers\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

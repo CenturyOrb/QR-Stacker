@@ -18,6 +18,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type Item = $Result.DefaultSelection<Prisma.$ItemPayload>
+/**
+ * Model Container
+ * 
+ */
+export type Container = $Result.DefaultSelection<Prisma.$ContainerPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -146,6 +151,16 @@ export class PrismaClient<
     * ```
     */
   get item(): Prisma.ItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.container`: Exposes CRUD operations for the **Container** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Containers
+    * const containers = await prisma.container.findMany()
+    * ```
+    */
+  get container(): Prisma.ContainerDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -587,7 +602,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Item: 'Item'
+    Item: 'Item',
+    Container: 'Container'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -606,7 +622,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "item"
+      modelProps: "item" | "container"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -681,6 +697,80 @@ export namespace Prisma {
           count: {
             args: Prisma.ItemCountArgs<ExtArgs>
             result: $Utils.Optional<ItemCountAggregateOutputType> | number
+          }
+        }
+      }
+      Container: {
+        payload: Prisma.$ContainerPayload<ExtArgs>
+        fields: Prisma.ContainerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ContainerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContainerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ContainerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContainerPayload>
+          }
+          findFirst: {
+            args: Prisma.ContainerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContainerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ContainerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContainerPayload>
+          }
+          findMany: {
+            args: Prisma.ContainerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContainerPayload>[]
+          }
+          create: {
+            args: Prisma.ContainerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContainerPayload>
+          }
+          createMany: {
+            args: Prisma.ContainerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ContainerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContainerPayload>[]
+          }
+          delete: {
+            args: Prisma.ContainerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContainerPayload>
+          }
+          update: {
+            args: Prisma.ContainerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContainerPayload>
+          }
+          deleteMany: {
+            args: Prisma.ContainerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ContainerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ContainerUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContainerPayload>[]
+          }
+          upsert: {
+            args: Prisma.ContainerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContainerPayload>
+          }
+          aggregate: {
+            args: Prisma.ContainerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateContainer>
+          }
+          groupBy: {
+            args: Prisma.ContainerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ContainerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ContainerCountArgs<ExtArgs>
+            result: $Utils.Optional<ContainerCountAggregateOutputType> | number
           }
         }
       }
@@ -781,6 +871,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     item?: ItemOmit
+    container?: ContainerOmit
   }
 
   /* Types for Logging */
@@ -856,6 +947,36 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type ContainerCountOutputType
+   */
+
+  export type ContainerCountOutputType = {
+    items: number
+  }
+
+  export type ContainerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | ContainerCountOutputTypeCountItemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ContainerCountOutputType without action
+   */
+  export type ContainerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContainerCountOutputType
+     */
+    select?: ContainerCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ContainerCountOutputType without action
+   */
+  export type ContainerCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ItemWhereInput
+  }
+
 
   /**
    * Models
@@ -876,11 +997,13 @@ export namespace Prisma {
   export type ItemAvgAggregateOutputType = {
     id: number | null
     price: number | null
+    containerId: number | null
   }
 
   export type ItemSumAggregateOutputType = {
     id: number | null
     price: number | null
+    containerId: number | null
   }
 
   export type ItemMinAggregateOutputType = {
@@ -889,6 +1012,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     price: number | null
+    containerId: number | null
   }
 
   export type ItemMaxAggregateOutputType = {
@@ -897,6 +1021,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     price: number | null
+    containerId: number | null
   }
 
   export type ItemCountAggregateOutputType = {
@@ -905,6 +1030,7 @@ export namespace Prisma {
     name: number
     description: number
     price: number
+    containerId: number
     _all: number
   }
 
@@ -912,11 +1038,13 @@ export namespace Prisma {
   export type ItemAvgAggregateInputType = {
     id?: true
     price?: true
+    containerId?: true
   }
 
   export type ItemSumAggregateInputType = {
     id?: true
     price?: true
+    containerId?: true
   }
 
   export type ItemMinAggregateInputType = {
@@ -925,6 +1053,7 @@ export namespace Prisma {
     name?: true
     description?: true
     price?: true
+    containerId?: true
   }
 
   export type ItemMaxAggregateInputType = {
@@ -933,6 +1062,7 @@ export namespace Prisma {
     name?: true
     description?: true
     price?: true
+    containerId?: true
   }
 
   export type ItemCountAggregateInputType = {
@@ -941,6 +1071,7 @@ export namespace Prisma {
     name?: true
     description?: true
     price?: true
+    containerId?: true
     _all?: true
   }
 
@@ -1036,6 +1167,7 @@ export namespace Prisma {
     name: string
     description: string | null
     price: number
+    containerId: number | null
     _count: ItemCountAggregateOutputType | null
     _avg: ItemAvgAggregateOutputType | null
     _sum: ItemSumAggregateOutputType | null
@@ -1063,6 +1195,8 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     price?: boolean
+    containerId?: boolean
+    container?: boolean | Item$containerArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
 
   export type ItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1071,6 +1205,8 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     price?: boolean
+    containerId?: boolean
+    container?: boolean | Item$containerArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
 
   export type ItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1079,6 +1215,8 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     price?: boolean
+    containerId?: boolean
+    container?: boolean | Item$containerArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
 
   export type ItemSelectScalar = {
@@ -1087,19 +1225,32 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     price?: boolean
+    containerId?: boolean
   }
 
-  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "name" | "description" | "price", ExtArgs["result"]["item"]>
+  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "name" | "description" | "price" | "containerId", ExtArgs["result"]["item"]>
+  export type ItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    container?: boolean | Item$containerArgs<ExtArgs>
+  }
+  export type ItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    container?: boolean | Item$containerArgs<ExtArgs>
+  }
+  export type ItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    container?: boolean | Item$containerArgs<ExtArgs>
+  }
 
   export type $ItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Item"
-    objects: {}
+    objects: {
+      container: Prisma.$ContainerPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       createdAt: Date
       name: string
       description: string | null
       price: number
+      containerId: number | null
     }, ExtArgs["result"]["item"]>
     composites: {}
   }
@@ -1494,6 +1645,7 @@ export namespace Prisma {
    */
   export interface Prisma__ItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    container<T extends Item$containerArgs<ExtArgs> = {}>(args?: Subset<T, Item$containerArgs<ExtArgs>>): Prisma__ContainerClient<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1528,6 +1680,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Item", 'String'>
     readonly description: FieldRef<"Item", 'String'>
     readonly price: FieldRef<"Item", 'Float'>
+    readonly containerId: FieldRef<"Item", 'Int'>
   }
     
 
@@ -1544,6 +1697,10 @@ export namespace Prisma {
      * Omit specific fields from the Item
      */
     omit?: ItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemInclude<ExtArgs> | null
     /**
      * Filter, which Item to fetch.
      */
@@ -1563,6 +1720,10 @@ export namespace Prisma {
      */
     omit?: ItemOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemInclude<ExtArgs> | null
+    /**
      * Filter, which Item to fetch.
      */
     where: ItemWhereUniqueInput
@@ -1580,6 +1741,10 @@ export namespace Prisma {
      * Omit specific fields from the Item
      */
     omit?: ItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemInclude<ExtArgs> | null
     /**
      * Filter, which Item to fetch.
      */
@@ -1629,6 +1794,10 @@ export namespace Prisma {
      */
     omit?: ItemOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemInclude<ExtArgs> | null
+    /**
      * Filter, which Item to fetch.
      */
     where?: ItemWhereInput
@@ -1677,6 +1846,10 @@ export namespace Prisma {
      */
     omit?: ItemOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemInclude<ExtArgs> | null
+    /**
      * Filter, which Items to fetch.
      */
     where?: ItemWhereInput
@@ -1720,6 +1893,10 @@ export namespace Prisma {
      */
     omit?: ItemOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemInclude<ExtArgs> | null
+    /**
      * The data needed to create a Item.
      */
     data: XOR<ItemCreateInput, ItemUncheckedCreateInput>
@@ -1753,6 +1930,10 @@ export namespace Prisma {
      */
     data: ItemCreateManyInput | ItemCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -1767,6 +1948,10 @@ export namespace Prisma {
      * Omit specific fields from the Item
      */
     omit?: ItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemInclude<ExtArgs> | null
     /**
      * The data needed to update a Item.
      */
@@ -1819,6 +2004,10 @@ export namespace Prisma {
      * Limit how many Items to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -1833,6 +2022,10 @@ export namespace Prisma {
      * Omit specific fields from the Item
      */
     omit?: ItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemInclude<ExtArgs> | null
     /**
      * The filter to search for the Item to update in case it exists.
      */
@@ -1860,6 +2053,10 @@ export namespace Prisma {
      */
     omit?: ItemOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemInclude<ExtArgs> | null
+    /**
      * Filter which Item to delete.
      */
     where: ItemWhereUniqueInput
@@ -1880,6 +2077,25 @@ export namespace Prisma {
   }
 
   /**
+   * Item.container
+   */
+  export type Item$containerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContainerInclude<ExtArgs> | null
+    where?: ContainerWhereInput
+  }
+
+  /**
    * Item without action
    */
   export type ItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1891,6 +2107,1062 @@ export namespace Prisma {
      * Omit specific fields from the Item
      */
     omit?: ItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Container
+   */
+
+  export type AggregateContainer = {
+    _count: ContainerCountAggregateOutputType | null
+    _avg: ContainerAvgAggregateOutputType | null
+    _sum: ContainerSumAggregateOutputType | null
+    _min: ContainerMinAggregateOutputType | null
+    _max: ContainerMaxAggregateOutputType | null
+  }
+
+  export type ContainerAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ContainerSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ContainerMinAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ContainerMaxAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ContainerCountAggregateOutputType = {
+    id: number
+    _all: number
+  }
+
+
+  export type ContainerAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ContainerSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ContainerMinAggregateInputType = {
+    id?: true
+  }
+
+  export type ContainerMaxAggregateInputType = {
+    id?: true
+  }
+
+  export type ContainerCountAggregateInputType = {
+    id?: true
+    _all?: true
+  }
+
+  export type ContainerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Container to aggregate.
+     */
+    where?: ContainerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Containers to fetch.
+     */
+    orderBy?: ContainerOrderByWithRelationInput | ContainerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ContainerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Containers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Containers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Containers
+    **/
+    _count?: true | ContainerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ContainerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ContainerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ContainerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ContainerMaxAggregateInputType
+  }
+
+  export type GetContainerAggregateType<T extends ContainerAggregateArgs> = {
+        [P in keyof T & keyof AggregateContainer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateContainer[P]>
+      : GetScalarType<T[P], AggregateContainer[P]>
+  }
+
+
+
+
+  export type ContainerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContainerWhereInput
+    orderBy?: ContainerOrderByWithAggregationInput | ContainerOrderByWithAggregationInput[]
+    by: ContainerScalarFieldEnum[] | ContainerScalarFieldEnum
+    having?: ContainerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ContainerCountAggregateInputType | true
+    _avg?: ContainerAvgAggregateInputType
+    _sum?: ContainerSumAggregateInputType
+    _min?: ContainerMinAggregateInputType
+    _max?: ContainerMaxAggregateInputType
+  }
+
+  export type ContainerGroupByOutputType = {
+    id: number
+    _count: ContainerCountAggregateOutputType | null
+    _avg: ContainerAvgAggregateOutputType | null
+    _sum: ContainerSumAggregateOutputType | null
+    _min: ContainerMinAggregateOutputType | null
+    _max: ContainerMaxAggregateOutputType | null
+  }
+
+  type GetContainerGroupByPayload<T extends ContainerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ContainerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ContainerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ContainerGroupByOutputType[P]>
+            : GetScalarType<T[P], ContainerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ContainerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    items?: boolean | Container$itemsArgs<ExtArgs>
+    _count?: boolean | ContainerCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["container"]>
+
+  export type ContainerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+  }, ExtArgs["result"]["container"]>
+
+  export type ContainerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+  }, ExtArgs["result"]["container"]>
+
+  export type ContainerSelectScalar = {
+    id?: boolean
+  }
+
+  export type ContainerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id", ExtArgs["result"]["container"]>
+  export type ContainerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | Container$itemsArgs<ExtArgs>
+    _count?: boolean | ContainerCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ContainerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ContainerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ContainerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Container"
+    objects: {
+      items: Prisma.$ItemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+    }, ExtArgs["result"]["container"]>
+    composites: {}
+  }
+
+  type ContainerGetPayload<S extends boolean | null | undefined | ContainerDefaultArgs> = $Result.GetResult<Prisma.$ContainerPayload, S>
+
+  type ContainerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ContainerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ContainerCountAggregateInputType | true
+    }
+
+  export interface ContainerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Container'], meta: { name: 'Container' } }
+    /**
+     * Find zero or one Container that matches the filter.
+     * @param {ContainerFindUniqueArgs} args - Arguments to find a Container
+     * @example
+     * // Get one Container
+     * const container = await prisma.container.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ContainerFindUniqueArgs>(args: SelectSubset<T, ContainerFindUniqueArgs<ExtArgs>>): Prisma__ContainerClient<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Container that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ContainerFindUniqueOrThrowArgs} args - Arguments to find a Container
+     * @example
+     * // Get one Container
+     * const container = await prisma.container.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ContainerFindUniqueOrThrowArgs>(args: SelectSubset<T, ContainerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ContainerClient<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Container that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContainerFindFirstArgs} args - Arguments to find a Container
+     * @example
+     * // Get one Container
+     * const container = await prisma.container.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ContainerFindFirstArgs>(args?: SelectSubset<T, ContainerFindFirstArgs<ExtArgs>>): Prisma__ContainerClient<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Container that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContainerFindFirstOrThrowArgs} args - Arguments to find a Container
+     * @example
+     * // Get one Container
+     * const container = await prisma.container.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ContainerFindFirstOrThrowArgs>(args?: SelectSubset<T, ContainerFindFirstOrThrowArgs<ExtArgs>>): Prisma__ContainerClient<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Containers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContainerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Containers
+     * const containers = await prisma.container.findMany()
+     * 
+     * // Get first 10 Containers
+     * const containers = await prisma.container.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const containerWithIdOnly = await prisma.container.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ContainerFindManyArgs>(args?: SelectSubset<T, ContainerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Container.
+     * @param {ContainerCreateArgs} args - Arguments to create a Container.
+     * @example
+     * // Create one Container
+     * const Container = await prisma.container.create({
+     *   data: {
+     *     // ... data to create a Container
+     *   }
+     * })
+     * 
+     */
+    create<T extends ContainerCreateArgs>(args: SelectSubset<T, ContainerCreateArgs<ExtArgs>>): Prisma__ContainerClient<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Containers.
+     * @param {ContainerCreateManyArgs} args - Arguments to create many Containers.
+     * @example
+     * // Create many Containers
+     * const container = await prisma.container.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ContainerCreateManyArgs>(args?: SelectSubset<T, ContainerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Containers and returns the data saved in the database.
+     * @param {ContainerCreateManyAndReturnArgs} args - Arguments to create many Containers.
+     * @example
+     * // Create many Containers
+     * const container = await prisma.container.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Containers and only return the `id`
+     * const containerWithIdOnly = await prisma.container.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ContainerCreateManyAndReturnArgs>(args?: SelectSubset<T, ContainerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Container.
+     * @param {ContainerDeleteArgs} args - Arguments to delete one Container.
+     * @example
+     * // Delete one Container
+     * const Container = await prisma.container.delete({
+     *   where: {
+     *     // ... filter to delete one Container
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ContainerDeleteArgs>(args: SelectSubset<T, ContainerDeleteArgs<ExtArgs>>): Prisma__ContainerClient<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Container.
+     * @param {ContainerUpdateArgs} args - Arguments to update one Container.
+     * @example
+     * // Update one Container
+     * const container = await prisma.container.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ContainerUpdateArgs>(args: SelectSubset<T, ContainerUpdateArgs<ExtArgs>>): Prisma__ContainerClient<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Containers.
+     * @param {ContainerDeleteManyArgs} args - Arguments to filter Containers to delete.
+     * @example
+     * // Delete a few Containers
+     * const { count } = await prisma.container.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ContainerDeleteManyArgs>(args?: SelectSubset<T, ContainerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Containers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContainerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Containers
+     * const container = await prisma.container.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ContainerUpdateManyArgs>(args: SelectSubset<T, ContainerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Containers and returns the data updated in the database.
+     * @param {ContainerUpdateManyAndReturnArgs} args - Arguments to update many Containers.
+     * @example
+     * // Update many Containers
+     * const container = await prisma.container.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Containers and only return the `id`
+     * const containerWithIdOnly = await prisma.container.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ContainerUpdateManyAndReturnArgs>(args: SelectSubset<T, ContainerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Container.
+     * @param {ContainerUpsertArgs} args - Arguments to update or create a Container.
+     * @example
+     * // Update or create a Container
+     * const container = await prisma.container.upsert({
+     *   create: {
+     *     // ... data to create a Container
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Container we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ContainerUpsertArgs>(args: SelectSubset<T, ContainerUpsertArgs<ExtArgs>>): Prisma__ContainerClient<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Containers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContainerCountArgs} args - Arguments to filter Containers to count.
+     * @example
+     * // Count the number of Containers
+     * const count = await prisma.container.count({
+     *   where: {
+     *     // ... the filter for the Containers we want to count
+     *   }
+     * })
+    **/
+    count<T extends ContainerCountArgs>(
+      args?: Subset<T, ContainerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ContainerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Container.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContainerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ContainerAggregateArgs>(args: Subset<T, ContainerAggregateArgs>): Prisma.PrismaPromise<GetContainerAggregateType<T>>
+
+    /**
+     * Group by Container.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContainerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ContainerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ContainerGroupByArgs['orderBy'] }
+        : { orderBy?: ContainerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ContainerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContainerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Container model
+   */
+  readonly fields: ContainerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Container.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ContainerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    items<T extends Container$itemsArgs<ExtArgs> = {}>(args?: Subset<T, Container$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Container model
+   */
+  interface ContainerFieldRefs {
+    readonly id: FieldRef<"Container", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Container findUnique
+   */
+  export type ContainerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContainerInclude<ExtArgs> | null
+    /**
+     * Filter, which Container to fetch.
+     */
+    where: ContainerWhereUniqueInput
+  }
+
+  /**
+   * Container findUniqueOrThrow
+   */
+  export type ContainerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContainerInclude<ExtArgs> | null
+    /**
+     * Filter, which Container to fetch.
+     */
+    where: ContainerWhereUniqueInput
+  }
+
+  /**
+   * Container findFirst
+   */
+  export type ContainerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContainerInclude<ExtArgs> | null
+    /**
+     * Filter, which Container to fetch.
+     */
+    where?: ContainerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Containers to fetch.
+     */
+    orderBy?: ContainerOrderByWithRelationInput | ContainerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Containers.
+     */
+    cursor?: ContainerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Containers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Containers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Containers.
+     */
+    distinct?: ContainerScalarFieldEnum | ContainerScalarFieldEnum[]
+  }
+
+  /**
+   * Container findFirstOrThrow
+   */
+  export type ContainerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContainerInclude<ExtArgs> | null
+    /**
+     * Filter, which Container to fetch.
+     */
+    where?: ContainerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Containers to fetch.
+     */
+    orderBy?: ContainerOrderByWithRelationInput | ContainerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Containers.
+     */
+    cursor?: ContainerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Containers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Containers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Containers.
+     */
+    distinct?: ContainerScalarFieldEnum | ContainerScalarFieldEnum[]
+  }
+
+  /**
+   * Container findMany
+   */
+  export type ContainerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContainerInclude<ExtArgs> | null
+    /**
+     * Filter, which Containers to fetch.
+     */
+    where?: ContainerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Containers to fetch.
+     */
+    orderBy?: ContainerOrderByWithRelationInput | ContainerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Containers.
+     */
+    cursor?: ContainerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Containers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Containers.
+     */
+    skip?: number
+    distinct?: ContainerScalarFieldEnum | ContainerScalarFieldEnum[]
+  }
+
+  /**
+   * Container create
+   */
+  export type ContainerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContainerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Container.
+     */
+    data?: XOR<ContainerCreateInput, ContainerUncheckedCreateInput>
+  }
+
+  /**
+   * Container createMany
+   */
+  export type ContainerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Containers.
+     */
+    data: ContainerCreateManyInput | ContainerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Container createManyAndReturn
+   */
+  export type ContainerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * The data used to create many Containers.
+     */
+    data: ContainerCreateManyInput | ContainerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Container update
+   */
+  export type ContainerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContainerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Container.
+     */
+    data: XOR<ContainerUpdateInput, ContainerUncheckedUpdateInput>
+    /**
+     * Choose, which Container to update.
+     */
+    where: ContainerWhereUniqueInput
+  }
+
+  /**
+   * Container updateMany
+   */
+  export type ContainerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Containers.
+     */
+    data: XOR<ContainerUpdateManyMutationInput, ContainerUncheckedUpdateManyInput>
+    /**
+     * Filter which Containers to update
+     */
+    where?: ContainerWhereInput
+    /**
+     * Limit how many Containers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Container updateManyAndReturn
+   */
+  export type ContainerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * The data used to update Containers.
+     */
+    data: XOR<ContainerUpdateManyMutationInput, ContainerUncheckedUpdateManyInput>
+    /**
+     * Filter which Containers to update
+     */
+    where?: ContainerWhereInput
+    /**
+     * Limit how many Containers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Container upsert
+   */
+  export type ContainerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContainerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Container to update in case it exists.
+     */
+    where: ContainerWhereUniqueInput
+    /**
+     * In case the Container found by the `where` argument doesn't exist, create a new Container with this data.
+     */
+    create: XOR<ContainerCreateInput, ContainerUncheckedCreateInput>
+    /**
+     * In case the Container was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ContainerUpdateInput, ContainerUncheckedUpdateInput>
+  }
+
+  /**
+   * Container delete
+   */
+  export type ContainerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContainerInclude<ExtArgs> | null
+    /**
+     * Filter which Container to delete.
+     */
+    where: ContainerWhereUniqueInput
+  }
+
+  /**
+   * Container deleteMany
+   */
+  export type ContainerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Containers to delete
+     */
+    where?: ContainerWhereInput
+    /**
+     * Limit how many Containers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Container.items
+   */
+  export type Container$itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Item
+     */
+    select?: ItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Item
+     */
+    omit?: ItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemInclude<ExtArgs> | null
+    where?: ItemWhereInput
+    orderBy?: ItemOrderByWithRelationInput | ItemOrderByWithRelationInput[]
+    cursor?: ItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ItemScalarFieldEnum | ItemScalarFieldEnum[]
+  }
+
+  /**
+   * Container without action
+   */
+  export type ContainerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Container
+     */
+    select?: ContainerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Container
+     */
+    omit?: ContainerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContainerInclude<ExtArgs> | null
   }
 
 
@@ -1913,10 +3185,18 @@ export namespace Prisma {
     createdAt: 'createdAt',
     name: 'name',
     description: 'description',
-    price: 'price'
+    price: 'price',
+    containerId: 'containerId'
   };
 
   export type ItemScalarFieldEnum = (typeof ItemScalarFieldEnum)[keyof typeof ItemScalarFieldEnum]
+
+
+  export const ContainerScalarFieldEnum: {
+    id: 'id'
+  };
+
+  export type ContainerScalarFieldEnum = (typeof ContainerScalarFieldEnum)[keyof typeof ContainerScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -2016,6 +3296,8 @@ export namespace Prisma {
     name?: StringFilter<"Item"> | string
     description?: StringNullableFilter<"Item"> | string | null
     price?: FloatFilter<"Item"> | number
+    containerId?: IntNullableFilter<"Item"> | number | null
+    container?: XOR<ContainerNullableScalarRelationFilter, ContainerWhereInput> | null
   }
 
   export type ItemOrderByWithRelationInput = {
@@ -2024,6 +3306,8 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     price?: SortOrder
+    containerId?: SortOrderInput | SortOrder
+    container?: ContainerOrderByWithRelationInput
   }
 
   export type ItemWhereUniqueInput = Prisma.AtLeast<{
@@ -2035,6 +3319,8 @@ export namespace Prisma {
     name?: StringFilter<"Item"> | string
     description?: StringNullableFilter<"Item"> | string | null
     price?: FloatFilter<"Item"> | number
+    containerId?: IntNullableFilter<"Item"> | number | null
+    container?: XOR<ContainerNullableScalarRelationFilter, ContainerWhereInput> | null
   }, "id">
 
   export type ItemOrderByWithAggregationInput = {
@@ -2043,6 +3329,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     price?: SortOrder
+    containerId?: SortOrderInput | SortOrder
     _count?: ItemCountOrderByAggregateInput
     _avg?: ItemAvgOrderByAggregateInput
     _max?: ItemMaxOrderByAggregateInput
@@ -2059,6 +3346,44 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Item"> | string
     description?: StringNullableWithAggregatesFilter<"Item"> | string | null
     price?: FloatWithAggregatesFilter<"Item"> | number
+    containerId?: IntNullableWithAggregatesFilter<"Item"> | number | null
+  }
+
+  export type ContainerWhereInput = {
+    AND?: ContainerWhereInput | ContainerWhereInput[]
+    OR?: ContainerWhereInput[]
+    NOT?: ContainerWhereInput | ContainerWhereInput[]
+    id?: IntFilter<"Container"> | number
+    items?: ItemListRelationFilter
+  }
+
+  export type ContainerOrderByWithRelationInput = {
+    id?: SortOrder
+    items?: ItemOrderByRelationAggregateInput
+  }
+
+  export type ContainerWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ContainerWhereInput | ContainerWhereInput[]
+    OR?: ContainerWhereInput[]
+    NOT?: ContainerWhereInput | ContainerWhereInput[]
+    items?: ItemListRelationFilter
+  }, "id">
+
+  export type ContainerOrderByWithAggregationInput = {
+    id?: SortOrder
+    _count?: ContainerCountOrderByAggregateInput
+    _avg?: ContainerAvgOrderByAggregateInput
+    _max?: ContainerMaxOrderByAggregateInput
+    _min?: ContainerMinOrderByAggregateInput
+    _sum?: ContainerSumOrderByAggregateInput
+  }
+
+  export type ContainerScalarWhereWithAggregatesInput = {
+    AND?: ContainerScalarWhereWithAggregatesInput | ContainerScalarWhereWithAggregatesInput[]
+    OR?: ContainerScalarWhereWithAggregatesInput[]
+    NOT?: ContainerScalarWhereWithAggregatesInput | ContainerScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Container"> | number
   }
 
   export type ItemCreateInput = {
@@ -2066,6 +3391,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     price: number
+    container?: ContainerCreateNestedOneWithoutItemsInput
   }
 
   export type ItemUncheckedCreateInput = {
@@ -2074,6 +3400,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     price: number
+    containerId?: number | null
   }
 
   export type ItemUpdateInput = {
@@ -2081,6 +3408,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    container?: ContainerUpdateOneWithoutItemsNestedInput
   }
 
   export type ItemUncheckedUpdateInput = {
@@ -2089,6 +3417,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    containerId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ItemCreateManyInput = {
@@ -2097,6 +3426,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     price: number
+    containerId?: number | null
   }
 
   export type ItemUpdateManyMutationInput = {
@@ -2112,6 +3442,37 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    containerId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ContainerCreateInput = {
+    items?: ItemCreateNestedManyWithoutContainerInput
+  }
+
+  export type ContainerUncheckedCreateInput = {
+    id?: number
+    items?: ItemUncheckedCreateNestedManyWithoutContainerInput
+  }
+
+  export type ContainerUpdateInput = {
+    items?: ItemUpdateManyWithoutContainerNestedInput
+  }
+
+  export type ContainerUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    items?: ItemUncheckedUpdateManyWithoutContainerNestedInput
+  }
+
+  export type ContainerCreateManyInput = {
+    id?: number
+  }
+
+  export type ContainerUpdateManyMutationInput = {
+
+  }
+
+  export type ContainerUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2177,6 +3538,22 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type ContainerNullableScalarRelationFilter = {
+    is?: ContainerWhereInput | null
+    isNot?: ContainerWhereInput | null
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -2188,11 +3565,13 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     price?: SortOrder
+    containerId?: SortOrder
   }
 
   export type ItemAvgOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
+    containerId?: SortOrder
   }
 
   export type ItemMaxOrderByAggregateInput = {
@@ -2201,6 +3580,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     price?: SortOrder
+    containerId?: SortOrder
   }
 
   export type ItemMinOrderByAggregateInput = {
@@ -2209,11 +3589,13 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     price?: SortOrder
+    containerId?: SortOrder
   }
 
   export type ItemSumOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
+    containerId?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2298,6 +3680,58 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type ItemListRelationFilter = {
+    every?: ItemWhereInput
+    some?: ItemWhereInput
+    none?: ItemWhereInput
+  }
+
+  export type ItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ContainerCountOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ContainerAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ContainerMaxOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ContainerMinOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ContainerSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ContainerCreateNestedOneWithoutItemsInput = {
+    create?: XOR<ContainerCreateWithoutItemsInput, ContainerUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: ContainerCreateOrConnectWithoutItemsInput
+    connect?: ContainerWhereUniqueInput
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -2318,12 +3752,72 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type ContainerUpdateOneWithoutItemsNestedInput = {
+    create?: XOR<ContainerCreateWithoutItemsInput, ContainerUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: ContainerCreateOrConnectWithoutItemsInput
+    upsert?: ContainerUpsertWithoutItemsInput
+    disconnect?: ContainerWhereInput | boolean
+    delete?: ContainerWhereInput | boolean
+    connect?: ContainerWhereUniqueInput
+    update?: XOR<XOR<ContainerUpdateToOneWithWhereWithoutItemsInput, ContainerUpdateWithoutItemsInput>, ContainerUncheckedUpdateWithoutItemsInput>
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type ItemCreateNestedManyWithoutContainerInput = {
+    create?: XOR<ItemCreateWithoutContainerInput, ItemUncheckedCreateWithoutContainerInput> | ItemCreateWithoutContainerInput[] | ItemUncheckedCreateWithoutContainerInput[]
+    connectOrCreate?: ItemCreateOrConnectWithoutContainerInput | ItemCreateOrConnectWithoutContainerInput[]
+    createMany?: ItemCreateManyContainerInputEnvelope
+    connect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+  }
+
+  export type ItemUncheckedCreateNestedManyWithoutContainerInput = {
+    create?: XOR<ItemCreateWithoutContainerInput, ItemUncheckedCreateWithoutContainerInput> | ItemCreateWithoutContainerInput[] | ItemUncheckedCreateWithoutContainerInput[]
+    connectOrCreate?: ItemCreateOrConnectWithoutContainerInput | ItemCreateOrConnectWithoutContainerInput[]
+    createMany?: ItemCreateManyContainerInputEnvelope
+    connect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+  }
+
+  export type ItemUpdateManyWithoutContainerNestedInput = {
+    create?: XOR<ItemCreateWithoutContainerInput, ItemUncheckedCreateWithoutContainerInput> | ItemCreateWithoutContainerInput[] | ItemUncheckedCreateWithoutContainerInput[]
+    connectOrCreate?: ItemCreateOrConnectWithoutContainerInput | ItemCreateOrConnectWithoutContainerInput[]
+    upsert?: ItemUpsertWithWhereUniqueWithoutContainerInput | ItemUpsertWithWhereUniqueWithoutContainerInput[]
+    createMany?: ItemCreateManyContainerInputEnvelope
+    set?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    disconnect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    delete?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    connect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    update?: ItemUpdateWithWhereUniqueWithoutContainerInput | ItemUpdateWithWhereUniqueWithoutContainerInput[]
+    updateMany?: ItemUpdateManyWithWhereWithoutContainerInput | ItemUpdateManyWithWhereWithoutContainerInput[]
+    deleteMany?: ItemScalarWhereInput | ItemScalarWhereInput[]
+  }
+
+  export type ItemUncheckedUpdateManyWithoutContainerNestedInput = {
+    create?: XOR<ItemCreateWithoutContainerInput, ItemUncheckedCreateWithoutContainerInput> | ItemCreateWithoutContainerInput[] | ItemUncheckedCreateWithoutContainerInput[]
+    connectOrCreate?: ItemCreateOrConnectWithoutContainerInput | ItemCreateOrConnectWithoutContainerInput[]
+    upsert?: ItemUpsertWithWhereUniqueWithoutContainerInput | ItemUpsertWithWhereUniqueWithoutContainerInput[]
+    createMany?: ItemCreateManyContainerInputEnvelope
+    set?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    disconnect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    delete?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    connect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    update?: ItemUpdateWithWhereUniqueWithoutContainerInput | ItemUpdateWithWhereUniqueWithoutContainerInput[]
+    updateMany?: ItemUpdateManyWithWhereWithoutContainerInput | ItemUpdateManyWithWhereWithoutContainerInput[]
+    deleteMany?: ItemScalarWhereInput | ItemScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -2385,6 +3879,17 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2451,17 +3956,6 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -2476,6 +3970,149 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type ContainerCreateWithoutItemsInput = {
+
+  }
+
+  export type ContainerUncheckedCreateWithoutItemsInput = {
+    id?: number
+  }
+
+  export type ContainerCreateOrConnectWithoutItemsInput = {
+    where: ContainerWhereUniqueInput
+    create: XOR<ContainerCreateWithoutItemsInput, ContainerUncheckedCreateWithoutItemsInput>
+  }
+
+  export type ContainerUpsertWithoutItemsInput = {
+    update: XOR<ContainerUpdateWithoutItemsInput, ContainerUncheckedUpdateWithoutItemsInput>
+    create: XOR<ContainerCreateWithoutItemsInput, ContainerUncheckedCreateWithoutItemsInput>
+    where?: ContainerWhereInput
+  }
+
+  export type ContainerUpdateToOneWithWhereWithoutItemsInput = {
+    where?: ContainerWhereInput
+    data: XOR<ContainerUpdateWithoutItemsInput, ContainerUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type ContainerUpdateWithoutItemsInput = {
+
+  }
+
+  export type ContainerUncheckedUpdateWithoutItemsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ItemCreateWithoutContainerInput = {
+    createdAt?: Date | string
+    name: string
+    description?: string | null
+    price: number
+  }
+
+  export type ItemUncheckedCreateWithoutContainerInput = {
+    id?: number
+    createdAt?: Date | string
+    name: string
+    description?: string | null
+    price: number
+  }
+
+  export type ItemCreateOrConnectWithoutContainerInput = {
+    where: ItemWhereUniqueInput
+    create: XOR<ItemCreateWithoutContainerInput, ItemUncheckedCreateWithoutContainerInput>
+  }
+
+  export type ItemCreateManyContainerInputEnvelope = {
+    data: ItemCreateManyContainerInput | ItemCreateManyContainerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ItemUpsertWithWhereUniqueWithoutContainerInput = {
+    where: ItemWhereUniqueInput
+    update: XOR<ItemUpdateWithoutContainerInput, ItemUncheckedUpdateWithoutContainerInput>
+    create: XOR<ItemCreateWithoutContainerInput, ItemUncheckedCreateWithoutContainerInput>
+  }
+
+  export type ItemUpdateWithWhereUniqueWithoutContainerInput = {
+    where: ItemWhereUniqueInput
+    data: XOR<ItemUpdateWithoutContainerInput, ItemUncheckedUpdateWithoutContainerInput>
+  }
+
+  export type ItemUpdateManyWithWhereWithoutContainerInput = {
+    where: ItemScalarWhereInput
+    data: XOR<ItemUpdateManyMutationInput, ItemUncheckedUpdateManyWithoutContainerInput>
+  }
+
+  export type ItemScalarWhereInput = {
+    AND?: ItemScalarWhereInput | ItemScalarWhereInput[]
+    OR?: ItemScalarWhereInput[]
+    NOT?: ItemScalarWhereInput | ItemScalarWhereInput[]
+    id?: IntFilter<"Item"> | number
+    createdAt?: DateTimeFilter<"Item"> | Date | string
+    name?: StringFilter<"Item"> | string
+    description?: StringNullableFilter<"Item"> | string | null
+    price?: FloatFilter<"Item"> | number
+    containerId?: IntNullableFilter<"Item"> | number | null
+  }
+
+  export type ItemCreateManyContainerInput = {
+    id?: number
+    createdAt?: Date | string
+    name: string
+    description?: string | null
+    price: number
+  }
+
+  export type ItemUpdateWithoutContainerInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type ItemUncheckedUpdateWithoutContainerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type ItemUncheckedUpdateManyWithoutContainerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
   }
 
 

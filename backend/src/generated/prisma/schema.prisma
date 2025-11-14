@@ -9,11 +9,20 @@ datasource db {
 }
 
 model Item {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  name        String   @db.VarChar(255)
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  name        String     @db.VarChar(255)
   description String?
   price       Float
+  containerId Int?       @map("container_id")
+  container   Container? @relation(fields: [containerId], references: [id])
 
   @@map("items")
+}
+
+model Container {
+  id    Int    @id @default(autoincrement())
+  items Item[]
+
+  @@map("containers")
 }

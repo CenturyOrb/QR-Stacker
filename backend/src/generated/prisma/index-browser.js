@@ -126,7 +126,12 @@ exports.Prisma.ItemScalarFieldEnum = {
   createdAt: 'createdAt',
   name: 'name',
   description: 'description',
-  price: 'price'
+  price: 'price',
+  containerId: 'containerId'
+};
+
+exports.Prisma.ContainerScalarFieldEnum = {
+  id: 'id'
 };
 
 exports.Prisma.SortOrder = {
@@ -146,7 +151,8 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Item: 'Item'
+  Item: 'Item',
+  Container: 'Container'
 };
 
 /**

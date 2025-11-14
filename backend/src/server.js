@@ -24,13 +24,13 @@ app.use((req, res, next) => {
 // syncronous middleware errors implicitly calls error handler middleware
 // asyncronous middleware errors needs explicit call next(Error)
 // https://expressjs.com/en/guide/error-handling.html
-app.use((err, req, res, next) => { 
-	console.log(err.stack);
-	if (!err.stack || !err.status) { 
-		err.status = 500;
-		err.message = 'Internal Server Error';
-	}
-	res.status(err.status).json({error: err.message});
+app.use((err, req, res, next) => {
+  if (!err.status) {
+    err.status = 500;
+    err.message = 'Internal Server Error';
+  }
+  console.log(err.stack);
+  res.status(err.status).json({ error: err.message });
 });
 
 app.listen(port, () => console.log(`Server has started on port: ${port}`));

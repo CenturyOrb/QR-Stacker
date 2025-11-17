@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import morgan from 'morgan'
 const app = express();
 const port = 3000; // this should be set in .env later
@@ -8,6 +9,10 @@ import authRoutes from './routes/authRoutes.js'
 
 // middleware to parse form data and http req body data to req.body
 app.use(
+	cors({
+		origin: "*",
+	  	allowedHeaders: ["Authorization", "Content-Type"],
+	}),
 	morgan('tiny'),
 	express.urlencoded({extended: true}), 
 	express.json()

@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import styles from './app.module.css'
 import SideBar from './components/side-bar/SideBar.jsx'
 import Main from './components/main/Main.jsx'
+import SignUp from './components/signup/SignUp.jsx'
 
 export const ViewContext = createContext();
 
@@ -23,6 +24,7 @@ function App() {
 				<SideBar />
 				<Routes>
           			<Route path="/" element={<Main />} />
+					<Route path="/signup" element={<SignUp />} />
         		</Routes>
 			</ViewContext.Provider>
 		</div> 

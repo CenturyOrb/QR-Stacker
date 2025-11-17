@@ -106,6 +106,14 @@ exports.Prisma.ContainerScalarFieldEnum = {
   id: 'id'
 };
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  firebaseUid: 'firebaseUid',
+  email: 'email',
+  name: 'name',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -124,7 +132,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   Item: 'Item',
-  Container: 'Container'
+  Container: 'Container',
+  User: 'User'
 };
 /**
  * Create the Client
@@ -173,13 +182,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Item {\n  id          Int        @id @default(autoincrement())\n  createdAt   DateTime   @default(now())\n  name        String     @db.VarChar(255)\n  description String?\n  price       Float\n  containerId Int?       @map(\"container_id\")\n  container   Container? @relation(fields: [containerId], references: [id])\n\n  @@map(\"items\")\n}\n\nmodel Container {\n  id    Int    @id @default(autoincrement())\n  items Item[]\n\n  @@map(\"containers\")\n}\n",
-  "inlineSchemaHash": "28e903aa55e9c3405f4a3db128876528e06df2b1c684adb02ce85f20c18c5c1b",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Item {\n  id          Int        @id @default(autoincrement())\n  createdAt   DateTime   @default(now())\n  name        String     @db.VarChar(255)\n  description String?\n  price       Float\n  containerId Int?       @map(\"container_id\")\n  container   Container? @relation(fields: [containerId], references: [id])\n\n  @@map(\"items\")\n}\n\nmodel Container {\n  id    Int    @id @default(autoincrement())\n  items Item[]\n\n  @@map(\"containers\")\n}\n\nmodel User {\n  id          Int      @id @default(autoincrement())\n  firebaseUid String   @unique\n  email       String\n  name        String\n  createdAt   DateTime @default(now())\n}\n",
+  "inlineSchemaHash": "d5880ffa88b311f69cd4c7e04e1584c8779b125fe28285b83ff2e336c64cb66c",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Item\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"containerId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"container_id\"},{\"name\":\"container\",\"kind\":\"object\",\"type\":\"Container\",\"relationName\":\"ContainerToItem\"}],\"dbName\":\"items\"},\"Container\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"items\",\"kind\":\"object\",\"type\":\"Item\",\"relationName\":\"ContainerToItem\"}],\"dbName\":\"containers\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Item\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"containerId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"container_id\"},{\"name\":\"container\",\"kind\":\"object\",\"type\":\"Container\",\"relationName\":\"ContainerToItem\"}],\"dbName\":\"items\"},\"Container\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"items\",\"kind\":\"object\",\"type\":\"Item\",\"relationName\":\"ContainerToItem\"}],\"dbName\":\"containers\"},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"firebaseUid\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

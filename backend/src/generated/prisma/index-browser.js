@@ -134,6 +134,14 @@ exports.Prisma.ContainerScalarFieldEnum = {
   id: 'id'
 };
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  firebaseUid: 'firebaseUid',
+  email: 'email',
+  name: 'name',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -152,7 +160,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   Item: 'Item',
-  Container: 'Container'
+  Container: 'Container',
+  User: 'User'
 };
 
 /**

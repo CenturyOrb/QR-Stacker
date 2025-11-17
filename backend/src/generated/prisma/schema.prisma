@@ -26,3 +26,11 @@ model Container {
 
   @@map("containers")
 }
+
+model User {
+  id          Int      @id @default(autoincrement())
+  firebaseUid String   @unique
+  email       String
+  name        String
+  createdAt   DateTime @default(now())
+}

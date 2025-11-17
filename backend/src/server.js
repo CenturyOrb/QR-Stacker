@@ -4,6 +4,7 @@ const app = express();
 const port = 3000; // this should be set in .env later
 
 import itemRoutes from './routes/itemRoutes.js'
+import authRoutes from './routes/authRoutes.js'
 
 // middleware to parse form data and http req body data to req.body
 app.use(
@@ -14,6 +15,7 @@ app.use(
 
 // routes
 app.use('/api/item', itemRoutes);
+app.use('/api/auth', authRoutes);
 
 // error handling for non existent route, this is still a regular middleware
 app.use((req, res, next) => { 

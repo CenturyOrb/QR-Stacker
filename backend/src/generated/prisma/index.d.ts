@@ -1120,14 +1120,12 @@ export namespace Prisma {
     id: number | null
     price: number | null
     containerId: number | null
-    userId: number | null
   }
 
   export type ItemSumAggregateOutputType = {
     id: number | null
     price: number | null
     containerId: number | null
-    userId: number | null
   }
 
   export type ItemMinAggregateOutputType = {
@@ -1137,7 +1135,7 @@ export namespace Prisma {
     description: string | null
     price: number | null
     containerId: number | null
-    userId: number | null
+    userUID: string | null
   }
 
   export type ItemMaxAggregateOutputType = {
@@ -1147,7 +1145,7 @@ export namespace Prisma {
     description: string | null
     price: number | null
     containerId: number | null
-    userId: number | null
+    userUID: string | null
   }
 
   export type ItemCountAggregateOutputType = {
@@ -1157,7 +1155,7 @@ export namespace Prisma {
     description: number
     price: number
     containerId: number
-    userId: number
+    userUID: number
     _all: number
   }
 
@@ -1166,14 +1164,12 @@ export namespace Prisma {
     id?: true
     price?: true
     containerId?: true
-    userId?: true
   }
 
   export type ItemSumAggregateInputType = {
     id?: true
     price?: true
     containerId?: true
-    userId?: true
   }
 
   export type ItemMinAggregateInputType = {
@@ -1183,7 +1179,7 @@ export namespace Prisma {
     description?: true
     price?: true
     containerId?: true
-    userId?: true
+    userUID?: true
   }
 
   export type ItemMaxAggregateInputType = {
@@ -1193,7 +1189,7 @@ export namespace Prisma {
     description?: true
     price?: true
     containerId?: true
-    userId?: true
+    userUID?: true
   }
 
   export type ItemCountAggregateInputType = {
@@ -1203,7 +1199,7 @@ export namespace Prisma {
     description?: true
     price?: true
     containerId?: true
-    userId?: true
+    userUID?: true
     _all?: true
   }
 
@@ -1300,7 +1296,7 @@ export namespace Prisma {
     description: string | null
     price: number
     containerId: number | null
-    userId: number
+    userUID: string
     _count: ItemCountAggregateOutputType | null
     _avg: ItemAvgAggregateOutputType | null
     _sum: ItemSumAggregateOutputType | null
@@ -1329,7 +1325,7 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     containerId?: boolean
-    userId?: boolean
+    userUID?: boolean
     container?: boolean | Item$containerArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
@@ -1341,7 +1337,7 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     containerId?: boolean
-    userId?: boolean
+    userUID?: boolean
     container?: boolean | Item$containerArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
@@ -1353,7 +1349,7 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     containerId?: boolean
-    userId?: boolean
+    userUID?: boolean
     container?: boolean | Item$containerArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
@@ -1365,10 +1361,10 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     containerId?: boolean
-    userId?: boolean
+    userUID?: boolean
   }
 
-  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "name" | "description" | "price" | "containerId" | "userId", ExtArgs["result"]["item"]>
+  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "name" | "description" | "price" | "containerId" | "userUID", ExtArgs["result"]["item"]>
   export type ItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     container?: boolean | Item$containerArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -1395,7 +1391,7 @@ export namespace Prisma {
       description: string | null
       price: number
       containerId: number | null
-      userId: number
+      userUID: string
     }, ExtArgs["result"]["item"]>
     composites: {}
   }
@@ -1827,7 +1823,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Item", 'String'>
     readonly price: FieldRef<"Item", 'Float'>
     readonly containerId: FieldRef<"Item", 'Int'>
-    readonly userId: FieldRef<"Item", 'Int'>
+    readonly userUID: FieldRef<"Item", 'String'>
   }
     
 
@@ -3319,39 +3315,26 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
 
-  export type UserAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type UserSumAggregateOutputType = {
-    id: number | null
-  }
-
   export type UserMinAggregateOutputType = {
-    id: number | null
-    firebaseUid: string | null
+    uid: string | null
     email: string | null
     name: string | null
     createdAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
-    id: number | null
-    firebaseUid: string | null
+    uid: string | null
     email: string | null
     name: string | null
     createdAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
-    id: number
-    firebaseUid: number
+    uid: number
     email: number
     name: number
     createdAt: number
@@ -3359,33 +3342,22 @@ export namespace Prisma {
   }
 
 
-  export type UserAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type UserSumAggregateInputType = {
-    id?: true
-  }
-
   export type UserMinAggregateInputType = {
-    id?: true
-    firebaseUid?: true
+    uid?: true
     email?: true
     name?: true
     createdAt?: true
   }
 
   export type UserMaxAggregateInputType = {
-    id?: true
-    firebaseUid?: true
+    uid?: true
     email?: true
     name?: true
     createdAt?: true
   }
 
   export type UserCountAggregateInputType = {
-    id?: true
-    firebaseUid?: true
+    uid?: true
     email?: true
     name?: true
     createdAt?: true
@@ -3430,18 +3402,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: UserAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UserSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -3472,21 +3432,16 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
-    _avg?: UserAvgAggregateInputType
-    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
 
   export type UserGroupByOutputType = {
-    id: number
-    firebaseUid: string
+    uid: string
     email: string
     name: string
     createdAt: Date
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -3506,8 +3461,7 @@ export namespace Prisma {
 
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    firebaseUid?: boolean
+    uid?: boolean
     email?: boolean
     name?: boolean
     createdAt?: boolean
@@ -3516,30 +3470,27 @@ export namespace Prisma {
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    firebaseUid?: boolean
+    uid?: boolean
     email?: boolean
     name?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    firebaseUid?: boolean
+    uid?: boolean
     email?: boolean
     name?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
-    id?: boolean
-    firebaseUid?: boolean
+    uid?: boolean
     email?: boolean
     name?: boolean
     createdAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firebaseUid" | "email" | "name" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"uid" | "email" | "name" | "createdAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     items?: boolean | User$itemsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -3553,8 +3504,7 @@ export namespace Prisma {
       items: Prisma.$ItemPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      firebaseUid: string
+      uid: string
       email: string
       name: string
       createdAt: Date
@@ -3641,8 +3591,8 @@ export namespace Prisma {
      * // Get first 10 Users
      * const users = await prisma.user.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
+     * // Only select the `uid`
+     * const userWithUidOnly = await prisma.user.findMany({ select: { uid: true } })
      * 
      */
     findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -3686,9 +3636,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.createManyAndReturn({
-     *   select: { id: true },
+     * // Create many Users and only return the `uid`
+     * const userWithUidOnly = await prisma.user.createManyAndReturn({
+     *   select: { uid: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -3777,9 +3727,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.updateManyAndReturn({
-     *   select: { id: true },
+     * // Update zero or more Users and only return the `uid`
+     * const userWithUidOnly = await prisma.user.updateManyAndReturn({
+     *   select: { uid: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3982,8 +3932,7 @@ export namespace Prisma {
    * Fields of the User model
    */
   interface UserFieldRefs {
-    readonly id: FieldRef<"User", 'Int'>
-    readonly firebaseUid: FieldRef<"User", 'String'>
+    readonly uid: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
@@ -4438,7 +4387,7 @@ export namespace Prisma {
     description: 'description',
     price: 'price',
     containerId: 'containerId',
-    userId: 'userId'
+    userUID: 'userUID'
   };
 
   export type ItemScalarFieldEnum = (typeof ItemScalarFieldEnum)[keyof typeof ItemScalarFieldEnum]
@@ -4452,8 +4401,7 @@ export namespace Prisma {
 
 
   export const UserScalarFieldEnum: {
-    id: 'id',
-    firebaseUid: 'firebaseUid',
+    uid: 'uid',
     email: 'email',
     name: 'name',
     createdAt: 'createdAt'
@@ -4560,7 +4508,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Item"> | string | null
     price?: FloatFilter<"Item"> | number
     containerId?: IntNullableFilter<"Item"> | number | null
-    userId?: IntFilter<"Item"> | number
+    userUID?: StringFilter<"Item"> | string
     container?: XOR<ContainerNullableScalarRelationFilter, ContainerWhereInput> | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -4572,7 +4520,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     price?: SortOrder
     containerId?: SortOrderInput | SortOrder
-    userId?: SortOrder
+    userUID?: SortOrder
     container?: ContainerOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
   }
@@ -4587,7 +4535,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Item"> | string | null
     price?: FloatFilter<"Item"> | number
     containerId?: IntNullableFilter<"Item"> | number | null
-    userId?: IntFilter<"Item"> | number
+    userUID?: StringFilter<"Item"> | string
     container?: XOR<ContainerNullableScalarRelationFilter, ContainerWhereInput> | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -4599,7 +4547,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     price?: SortOrder
     containerId?: SortOrderInput | SortOrder
-    userId?: SortOrder
+    userUID?: SortOrder
     _count?: ItemCountOrderByAggregateInput
     _avg?: ItemAvgOrderByAggregateInput
     _max?: ItemMaxOrderByAggregateInput
@@ -4617,7 +4565,7 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Item"> | string | null
     price?: FloatWithAggregatesFilter<"Item"> | number
     containerId?: IntNullableWithAggregatesFilter<"Item"> | number | null
-    userId?: IntWithAggregatesFilter<"Item"> | number
+    userUID?: StringWithAggregatesFilter<"Item"> | string
   }
 
   export type ContainerWhereInput = {
@@ -4661,8 +4609,7 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    id?: IntFilter<"User"> | number
-    firebaseUid?: StringFilter<"User"> | string
+    uid?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -4670,8 +4617,7 @@ export namespace Prisma {
   }
 
   export type UserOrderByWithRelationInput = {
-    id?: SortOrder
-    firebaseUid?: SortOrder
+    uid?: SortOrder
     email?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
@@ -4679,8 +4625,7 @@ export namespace Prisma {
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    firebaseUid?: string
+    uid?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
@@ -4688,27 +4633,23 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     items?: ItemListRelationFilter
-  }, "id" | "firebaseUid">
+  }, "uid" | "uid">
 
   export type UserOrderByWithAggregationInput = {
-    id?: SortOrder
-    firebaseUid?: SortOrder
+    uid?: SortOrder
     email?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
-    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
-    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
     AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"User"> | number
-    firebaseUid?: StringWithAggregatesFilter<"User"> | string
+    uid?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     name?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -4730,7 +4671,7 @@ export namespace Prisma {
     description?: string | null
     price: number
     containerId?: number | null
-    userId: number
+    userUID: string
   }
 
   export type ItemUpdateInput = {
@@ -4749,7 +4690,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     containerId?: NullableIntFieldUpdateOperationsInput | number | null
-    userId?: IntFieldUpdateOperationsInput | number
+    userUID?: StringFieldUpdateOperationsInput | string
   }
 
   export type ItemCreateManyInput = {
@@ -4759,7 +4700,7 @@ export namespace Prisma {
     description?: string | null
     price: number
     containerId?: number | null
-    userId: number
+    userUID: string
   }
 
   export type ItemUpdateManyMutationInput = {
@@ -4776,7 +4717,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     containerId?: NullableIntFieldUpdateOperationsInput | number | null
-    userId?: IntFieldUpdateOperationsInput | number
+    userUID?: StringFieldUpdateOperationsInput | string
   }
 
   export type ContainerCreateInput = {
@@ -4810,7 +4751,7 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
-    firebaseUid: string
+    uid: string
     email: string
     name: string
     createdAt?: Date | string
@@ -4818,8 +4759,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateInput = {
-    id?: number
-    firebaseUid: string
+    uid: string
     email: string
     name: string
     createdAt?: Date | string
@@ -4827,7 +4767,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateInput = {
-    firebaseUid?: StringFieldUpdateOperationsInput | string
+    uid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4835,8 +4775,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    firebaseUid?: StringFieldUpdateOperationsInput | string
+    uid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4844,23 +4783,21 @@ export namespace Prisma {
   }
 
   export type UserCreateManyInput = {
-    id?: number
-    firebaseUid: string
+    uid: string
     email: string
     name: string
     createdAt?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
-    firebaseUid?: StringFieldUpdateOperationsInput | string
+    uid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    firebaseUid?: StringFieldUpdateOperationsInput | string
+    uid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4962,14 +4899,13 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
-    userId?: SortOrder
+    userUID?: SortOrder
   }
 
   export type ItemAvgOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
-    userId?: SortOrder
   }
 
   export type ItemMaxOrderByAggregateInput = {
@@ -4979,7 +4915,7 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
-    userId?: SortOrder
+    userUID?: SortOrder
   }
 
   export type ItemMinOrderByAggregateInput = {
@@ -4989,14 +4925,13 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
-    userId?: SortOrder
+    userUID?: SortOrder
   }
 
   export type ItemSumOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
-    userId?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -5128,35 +5063,24 @@ export namespace Prisma {
   }
 
   export type UserCountOrderByAggregateInput = {
-    id?: SortOrder
-    firebaseUid?: SortOrder
+    uid?: SortOrder
     email?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type UserAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type UserMaxOrderByAggregateInput = {
-    id?: SortOrder
-    firebaseUid?: SortOrder
+    uid?: SortOrder
     email?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
-    id?: SortOrder
-    firebaseUid?: SortOrder
+    uid?: SortOrder
     email?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
-  }
-
-  export type UserSumOrderByAggregateInput = {
-    id?: SortOrder
   }
 
   export type ContainerCreateNestedOneWithoutItemsInput = {
@@ -5502,15 +5426,14 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutItemsInput = {
-    firebaseUid: string
+    uid: string
     email: string
     name: string
     createdAt?: Date | string
   }
 
   export type UserUncheckedCreateWithoutItemsInput = {
-    id?: number
-    firebaseUid: string
+    uid: string
     email: string
     name: string
     createdAt?: Date | string
@@ -5552,15 +5475,14 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutItemsInput = {
-    firebaseUid?: StringFieldUpdateOperationsInput | string
+    uid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateWithoutItemsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    firebaseUid?: StringFieldUpdateOperationsInput | string
+    uid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5580,7 +5502,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     price: number
-    userId: number
+    userUID: string
   }
 
   export type ItemCreateOrConnectWithoutContainerInput = {
@@ -5619,7 +5541,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Item"> | string | null
     price?: FloatFilter<"Item"> | number
     containerId?: IntNullableFilter<"Item"> | number | null
-    userId?: IntFilter<"Item"> | number
+    userUID?: StringFilter<"Item"> | string
   }
 
   export type ItemCreateWithoutUserInput = {
@@ -5671,7 +5593,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     price: number
-    userId: number
+    userUID: string
   }
 
   export type ItemUpdateWithoutContainerInput = {
@@ -5688,7 +5610,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userUID?: StringFieldUpdateOperationsInput | string
   }
 
   export type ItemUncheckedUpdateManyWithoutContainerInput = {
@@ -5697,7 +5619,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userUID?: StringFieldUpdateOperationsInput | string
   }
 
   export type ItemCreateManyUserInput = {

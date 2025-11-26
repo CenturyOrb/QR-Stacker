@@ -1,0 +1,137 @@
+[33mcommit 10229b1ef7735e3fc02fcf435c9848ded0593727[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Tue Nov 25 23:51:12 2025 -0500
+
+    Updated Schema for 1-m relation for user-item
+
+[33mcommit be7c564bacc2f68a26b9f7862fa68537cff1cbd7[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Mon Nov 17 18:04:30 2025 -0500
+
+    finished firebase auth with db users table
+
+[33mcommit d8e6ca23ce2f3fbd19e8fb92bd5e60f0262d55a8[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Sun Nov 16 21:55:41 2025 -0500
+
+    firebase authentication
+
+[33mcommit 444d656454d0e867f95777c8bda9c4b8b9add6f5[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Fri Nov 14 17:50:31 2025 -0500
+
+    setup react router
+
+[33mcommit 20746bac560ebd337ee9063cd6c21d254e43875e[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Thu Nov 13 23:56:36 2025 -0500
+
+    added container and one to many relation item - container in prisma schema
+
+[33mcommit f2e11c102728d20da2cd113595dbaccca8279101[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Tue Nov 11 15:20:29 2025 -0500
+
+    item get basic crud, no error handling
+
+[33mcommit 2268ed9649d0ce92d35e164b94fe5d1a61e2646a[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Mon Nov 10 23:42:38 2025 -0500
+
+    going to sleep
+
+[33mcommit 4ab524512f58256bce7d7657df99ca6283192204[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Sat Nov 8 23:51:21 2025 -0500
+
+    init items table
+
+[33mcommit ad4372cd9aeac17a72e22bf1e9f747653c9ec95a[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Fri Nov 7 13:59:00 2025 -0500
+
+    Added error handling
+
+[33mcommit 3187ad0e1bf392ab7b22c6f9ba8e9a3d73b92a30[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Thu Nov 6 23:20:39 2025 -0500
+
+    added middleware to read data from requsts
+
+[33mcommit 24fd22aee852438f53f1e7f5a3ad93cb627a24fb[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Tue Nov 4 22:45:20 2025 -0500
+
+    template
+
+[33mcommit 0a5da235051d363cd848828f62a957b802ac194a[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Tue Oct 28 22:21:49 2025 -0400
+
+    installed server packages
+
+[33mcommit b1bdcd006b791fb58117a08d06edc52a68a69b23[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Sun Oct 26 23:54:57 2025 -0400
+
+    init backend
+
+[33mcommit ca72d9d0f19dcb04b219eedf8a1d0c70406aae35[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Fri Oct 24 23:48:26 2025 -0400
+
+    ViewContext
+
+[33mcommit 1d3859dc7e03e930570915deb110a16d612ef1db[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Thu Oct 23 23:19:38 2025 -0400
+
+    Added qr.code to packages
+
+[33mcommit f06544fbf8fe29fac6420b67d1d365acca0dbe7b[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Thu Oct 23 23:05:59 2025 -0400
+
+    Reformatted Dashboard Summary to seperate compoennt pages
+
+[33mcommit ac05a98f3fd1f9005c6957541fbd149869378b7e[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Wed Oct 22 23:04:14 2025 -0400
+
+    Laid out recent updates
+
+[33mcommit 599189b96130f6929ee9236983e5b710a79d771e[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Tue Oct 21 23:58:21 2025 -0400
+
+    Summary
+
+[33mcommit 35fdbca27e7e02a550a62c1d792aaa8cd3e4e346[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Mon Oct 20 23:58:49 2025 -0400
+
+    Made search bar component
+
+[33mcommit 07e405ad054541a1ebbef418545f87e1439befc8[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Mon Oct 20 23:41:00 2025 -0400
+
+    Made Container component
+
+[33mcommit fbaeb7743a958168da0677ae5b73470c2008b365[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Wed Oct 15 18:24:19 2025 -0400
+
+    Finished Sidebar
+
+[33mcommit c7f860719085c10775035f1e69098066a1c66abf[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Wed Oct 15 14:13:22 2025 -0400
+
+    Progress on side bar
+
+[33mcommit a2ddb867e68474f0a42991c2f474e886fca9f2f0[m
+Author: CenturyOrb <122176094+CenturyOrb@users.noreply.github.com>
+Date:   Wed Oct 15 02:25:17 2025 -0400
+
+    Initial commit

@@ -127,7 +127,8 @@ exports.Prisma.ItemScalarFieldEnum = {
   name: 'name',
   description: 'description',
   price: 'price',
-  containerId: 'containerId'
+  containerId: 'containerId',
+  userId: 'userId'
 };
 
 exports.Prisma.ContainerScalarFieldEnum = {

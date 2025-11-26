@@ -6,10 +6,10 @@ export async function verifyFirebaseToken(req, res, next) {
 	error.status = 401;
 	
 	try { 
-		if (!authHeader?.startsWith('Bearer '))	throw error;
+		if (!authHeader?.startsWith('Bearer '))	throw error; // bearer token does not exists
 		const idToken = authHeader.split(' ')[1];
-		const decoded = await admin.auth().verifyIdToken(idToken);
-		req.user = decoded; // attach user derived from firebase id provider token
+		const decodedToken = await admin.auth().verifyIdToken(idToken);
+		req.user = decodedToken; // attach user derived from firebase id provider token
 		next();
 	} catch (err) {
 		if (!err.status) err.status = 401;

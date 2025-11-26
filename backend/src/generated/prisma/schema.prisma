@@ -17,6 +17,9 @@ model Item {
   containerId Int?       @map("container_id")
   container   Container? @relation(fields: [containerId], references: [id])
 
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
   @@map("items")
 }
 
@@ -33,4 +36,8 @@ model User {
   email       String
   name        String
   createdAt   DateTime @default(now())
+
+  items Item[]
+
+  @@map("users")
 }

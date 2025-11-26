@@ -99,7 +99,8 @@ exports.Prisma.ItemScalarFieldEnum = {
   name: 'name',
   description: 'description',
   price: 'price',
-  containerId: 'containerId'
+  containerId: 'containerId',
+  userId: 'userId'
 };
 
 exports.Prisma.ContainerScalarFieldEnum = {
@@ -182,13 +183,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Item {\n  id          Int        @id @default(autoincrement())\n  createdAt   DateTime   @default(now())\n  name        String     @db.VarChar(255)\n  description String?\n  price       Float\n  containerId Int?       @map(\"container_id\")\n  container   Container? @relation(fields: [containerId], references: [id])\n\n  @@map(\"items\")\n}\n\nmodel Container {\n  id    Int    @id @default(autoincrement())\n  items Item[]\n\n  @@map(\"containers\")\n}\n\nmodel User {\n  id          Int      @id @default(autoincrement())\n  firebaseUid String   @unique\n  email       String\n  name        String\n  createdAt   DateTime @default(now())\n}\n",
-  "inlineSchemaHash": "d5880ffa88b311f69cd4c7e04e1584c8779b125fe28285b83ff2e336c64cb66c",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Item {\n  id          Int        @id @default(autoincrement())\n  createdAt   DateTime   @default(now())\n  name        String     @db.VarChar(255)\n  description String?\n  price       Float\n  containerId Int?       @map(\"container_id\")\n  container   Container? @relation(fields: [containerId], references: [id])\n\n  user   User @relation(fields: [userId], references: [id])\n  userId Int\n\n  @@map(\"items\")\n}\n\nmodel Container {\n  id    Int    @id @default(autoincrement())\n  items Item[]\n\n  @@map(\"containers\")\n}\n\nmodel User {\n  id          Int      @id @default(autoincrement())\n  firebaseUid String   @unique\n  email       String\n  name        String\n  createdAt   DateTime @default(now())\n\n  items Item[]\n\n  @@map(\"users\")\n}\n",
+  "inlineSchemaHash": "da5465528e0745eff64d9a6b0e22a9921813ad9c81187911f575863e41701cb0",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Item\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"containerId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"container_id\"},{\"name\":\"container\",\"kind\":\"object\",\"type\":\"Container\",\"relationName\":\"ContainerToItem\"}],\"dbName\":\"items\"},\"Container\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"items\",\"kind\":\"object\",\"type\":\"Item\",\"relationName\":\"ContainerToItem\"}],\"dbName\":\"containers\"},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"firebaseUid\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Item\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"containerId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"container_id\"},{\"name\":\"container\",\"kind\":\"object\",\"type\":\"Container\",\"relationName\":\"ContainerToItem\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"ItemToUser\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":\"items\"},\"Container\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"items\",\"kind\":\"object\",\"type\":\"Item\",\"relationName\":\"ContainerToItem\"}],\"dbName\":\"containers\"},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"firebaseUid\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"items\",\"kind\":\"object\",\"type\":\"Item\",\"relationName\":\"ItemToUser\"}],\"dbName\":\"users\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

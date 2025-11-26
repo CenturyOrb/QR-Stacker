@@ -1070,6 +1070,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    items: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | UserCountOutputTypeCountItemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ItemWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -1089,12 +1120,14 @@ export namespace Prisma {
     id: number | null
     price: number | null
     containerId: number | null
+    userId: number | null
   }
 
   export type ItemSumAggregateOutputType = {
     id: number | null
     price: number | null
     containerId: number | null
+    userId: number | null
   }
 
   export type ItemMinAggregateOutputType = {
@@ -1104,6 +1137,7 @@ export namespace Prisma {
     description: string | null
     price: number | null
     containerId: number | null
+    userId: number | null
   }
 
   export type ItemMaxAggregateOutputType = {
@@ -1113,6 +1147,7 @@ export namespace Prisma {
     description: string | null
     price: number | null
     containerId: number | null
+    userId: number | null
   }
 
   export type ItemCountAggregateOutputType = {
@@ -1122,6 +1157,7 @@ export namespace Prisma {
     description: number
     price: number
     containerId: number
+    userId: number
     _all: number
   }
 
@@ -1130,12 +1166,14 @@ export namespace Prisma {
     id?: true
     price?: true
     containerId?: true
+    userId?: true
   }
 
   export type ItemSumAggregateInputType = {
     id?: true
     price?: true
     containerId?: true
+    userId?: true
   }
 
   export type ItemMinAggregateInputType = {
@@ -1145,6 +1183,7 @@ export namespace Prisma {
     description?: true
     price?: true
     containerId?: true
+    userId?: true
   }
 
   export type ItemMaxAggregateInputType = {
@@ -1154,6 +1193,7 @@ export namespace Prisma {
     description?: true
     price?: true
     containerId?: true
+    userId?: true
   }
 
   export type ItemCountAggregateInputType = {
@@ -1163,6 +1203,7 @@ export namespace Prisma {
     description?: true
     price?: true
     containerId?: true
+    userId?: true
     _all?: true
   }
 
@@ -1259,6 +1300,7 @@ export namespace Prisma {
     description: string | null
     price: number
     containerId: number | null
+    userId: number
     _count: ItemCountAggregateOutputType | null
     _avg: ItemAvgAggregateOutputType | null
     _sum: ItemSumAggregateOutputType | null
@@ -1287,7 +1329,9 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     containerId?: boolean
+    userId?: boolean
     container?: boolean | Item$containerArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
 
   export type ItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1297,7 +1341,9 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     containerId?: boolean
+    userId?: boolean
     container?: boolean | Item$containerArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
 
   export type ItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1307,7 +1353,9 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     containerId?: boolean
+    userId?: boolean
     container?: boolean | Item$containerArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
 
   export type ItemSelectScalar = {
@@ -1317,23 +1365,28 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     containerId?: boolean
+    userId?: boolean
   }
 
-  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "name" | "description" | "price" | "containerId", ExtArgs["result"]["item"]>
+  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "name" | "description" | "price" | "containerId" | "userId", ExtArgs["result"]["item"]>
   export type ItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     container?: boolean | Item$containerArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     container?: boolean | Item$containerArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     container?: boolean | Item$containerArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $ItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Item"
     objects: {
       container: Prisma.$ContainerPayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1342,6 +1395,7 @@ export namespace Prisma {
       description: string | null
       price: number
       containerId: number | null
+      userId: number
     }, ExtArgs["result"]["item"]>
     composites: {}
   }
@@ -1737,6 +1791,7 @@ export namespace Prisma {
   export interface Prisma__ItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     container<T extends Item$containerArgs<ExtArgs> = {}>(args?: Subset<T, Item$containerArgs<ExtArgs>>): Prisma__ContainerClient<$Result.GetResult<Prisma.$ContainerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1772,6 +1827,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Item", 'String'>
     readonly price: FieldRef<"Item", 'Float'>
     readonly containerId: FieldRef<"Item", 'Int'>
+    readonly userId: FieldRef<"Item", 'Int'>
   }
     
 
@@ -3455,6 +3511,8 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     createdAt?: boolean
+    items?: boolean | User$itemsArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3482,10 +3540,18 @@ export namespace Prisma {
   }
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firebaseUid" | "email" | "name" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | User$itemsArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      items: Prisma.$ItemPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       firebaseUid: string
@@ -3886,6 +3952,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    items<T extends User$itemsArgs<ExtArgs> = {}>(args?: Subset<T, User$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3937,6 +4004,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -3955,6 +4026,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -3972,6 +4047,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -4021,6 +4100,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -4069,6 +4152,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -4111,6 +4198,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -4159,6 +4250,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -4226,6 +4321,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -4252,6 +4351,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -4272,6 +4375,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.items
+   */
+  export type User$itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Item
+     */
+    select?: ItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Item
+     */
+    omit?: ItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemInclude<ExtArgs> | null
+    where?: ItemWhereInput
+    orderBy?: ItemOrderByWithRelationInput | ItemOrderByWithRelationInput[]
+    cursor?: ItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ItemScalarFieldEnum | ItemScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4283,6 +4410,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
   }
 
 
@@ -4306,7 +4437,8 @@ export namespace Prisma {
     name: 'name',
     description: 'description',
     price: 'price',
-    containerId: 'containerId'
+    containerId: 'containerId',
+    userId: 'userId'
   };
 
   export type ItemScalarFieldEnum = (typeof ItemScalarFieldEnum)[keyof typeof ItemScalarFieldEnum]
@@ -4428,7 +4560,9 @@ export namespace Prisma {
     description?: StringNullableFilter<"Item"> | string | null
     price?: FloatFilter<"Item"> | number
     containerId?: IntNullableFilter<"Item"> | number | null
+    userId?: IntFilter<"Item"> | number
     container?: XOR<ContainerNullableScalarRelationFilter, ContainerWhereInput> | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ItemOrderByWithRelationInput = {
@@ -4438,7 +4572,9 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     price?: SortOrder
     containerId?: SortOrderInput | SortOrder
+    userId?: SortOrder
     container?: ContainerOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type ItemWhereUniqueInput = Prisma.AtLeast<{
@@ -4451,7 +4587,9 @@ export namespace Prisma {
     description?: StringNullableFilter<"Item"> | string | null
     price?: FloatFilter<"Item"> | number
     containerId?: IntNullableFilter<"Item"> | number | null
+    userId?: IntFilter<"Item"> | number
     container?: XOR<ContainerNullableScalarRelationFilter, ContainerWhereInput> | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type ItemOrderByWithAggregationInput = {
@@ -4461,6 +4599,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     price?: SortOrder
     containerId?: SortOrderInput | SortOrder
+    userId?: SortOrder
     _count?: ItemCountOrderByAggregateInput
     _avg?: ItemAvgOrderByAggregateInput
     _max?: ItemMaxOrderByAggregateInput
@@ -4478,6 +4617,7 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Item"> | string | null
     price?: FloatWithAggregatesFilter<"Item"> | number
     containerId?: IntNullableWithAggregatesFilter<"Item"> | number | null
+    userId?: IntWithAggregatesFilter<"Item"> | number
   }
 
   export type ContainerWhereInput = {
@@ -4526,6 +4666,7 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
+    items?: ItemListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4534,6 +4675,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
+    items?: ItemOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4545,6 +4687,7 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
+    items?: ItemListRelationFilter
   }, "id" | "firebaseUid">
 
   export type UserOrderByWithAggregationInput = {
@@ -4577,6 +4720,7 @@ export namespace Prisma {
     description?: string | null
     price: number
     container?: ContainerCreateNestedOneWithoutItemsInput
+    user: UserCreateNestedOneWithoutItemsInput
   }
 
   export type ItemUncheckedCreateInput = {
@@ -4586,6 +4730,7 @@ export namespace Prisma {
     description?: string | null
     price: number
     containerId?: number | null
+    userId: number
   }
 
   export type ItemUpdateInput = {
@@ -4594,6 +4739,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     container?: ContainerUpdateOneWithoutItemsNestedInput
+    user?: UserUpdateOneRequiredWithoutItemsNestedInput
   }
 
   export type ItemUncheckedUpdateInput = {
@@ -4603,6 +4749,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     containerId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ItemCreateManyInput = {
@@ -4612,6 +4759,7 @@ export namespace Prisma {
     description?: string | null
     price: number
     containerId?: number | null
+    userId: number
   }
 
   export type ItemUpdateManyMutationInput = {
@@ -4628,6 +4776,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     containerId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ContainerCreateInput = {
@@ -4665,6 +4814,7 @@ export namespace Prisma {
     email: string
     name: string
     createdAt?: Date | string
+    items?: ItemCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4673,6 +4823,7 @@ export namespace Prisma {
     email: string
     name: string
     createdAt?: Date | string
+    items?: ItemUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -4680,6 +4831,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: ItemUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4688,6 +4840,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: ItemUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -4792,6 +4945,11 @@ export namespace Prisma {
     isNot?: ContainerWhereInput | null
   }
 
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -4804,12 +4962,14 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
+    userId?: SortOrder
   }
 
   export type ItemAvgOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
+    userId?: SortOrder
   }
 
   export type ItemMaxOrderByAggregateInput = {
@@ -4819,6 +4979,7 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
+    userId?: SortOrder
   }
 
   export type ItemMinOrderByAggregateInput = {
@@ -4828,12 +4989,14 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
+    userId?: SortOrder
   }
 
   export type ItemSumOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
+    userId?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -5002,6 +5165,12 @@ export namespace Prisma {
     connect?: ContainerWhereUniqueInput
   }
 
+  export type UserCreateNestedOneWithoutItemsInput = {
+    create?: XOR<UserCreateWithoutItemsInput, UserUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutItemsInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -5030,6 +5199,14 @@ export namespace Prisma {
     delete?: ContainerWhereInput | boolean
     connect?: ContainerWhereUniqueInput
     update?: XOR<XOR<ContainerUpdateToOneWithWhereWithoutItemsInput, ContainerUpdateWithoutItemsInput>, ContainerUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutItemsNestedInput = {
+    create?: XOR<UserCreateWithoutItemsInput, UserUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutItemsInput
+    upsert?: UserUpsertWithoutItemsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutItemsInput, UserUpdateWithoutItemsInput>, UserUncheckedUpdateWithoutItemsInput>
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -5087,6 +5264,48 @@ export namespace Prisma {
     connect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
     update?: ItemUpdateWithWhereUniqueWithoutContainerInput | ItemUpdateWithWhereUniqueWithoutContainerInput[]
     updateMany?: ItemUpdateManyWithWhereWithoutContainerInput | ItemUpdateManyWithWhereWithoutContainerInput[]
+    deleteMany?: ItemScalarWhereInput | ItemScalarWhereInput[]
+  }
+
+  export type ItemCreateNestedManyWithoutUserInput = {
+    create?: XOR<ItemCreateWithoutUserInput, ItemUncheckedCreateWithoutUserInput> | ItemCreateWithoutUserInput[] | ItemUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ItemCreateOrConnectWithoutUserInput | ItemCreateOrConnectWithoutUserInput[]
+    createMany?: ItemCreateManyUserInputEnvelope
+    connect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+  }
+
+  export type ItemUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ItemCreateWithoutUserInput, ItemUncheckedCreateWithoutUserInput> | ItemCreateWithoutUserInput[] | ItemUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ItemCreateOrConnectWithoutUserInput | ItemCreateOrConnectWithoutUserInput[]
+    createMany?: ItemCreateManyUserInputEnvelope
+    connect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+  }
+
+  export type ItemUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ItemCreateWithoutUserInput, ItemUncheckedCreateWithoutUserInput> | ItemCreateWithoutUserInput[] | ItemUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ItemCreateOrConnectWithoutUserInput | ItemCreateOrConnectWithoutUserInput[]
+    upsert?: ItemUpsertWithWhereUniqueWithoutUserInput | ItemUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ItemCreateManyUserInputEnvelope
+    set?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    disconnect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    delete?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    connect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    update?: ItemUpdateWithWhereUniqueWithoutUserInput | ItemUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ItemUpdateManyWithWhereWithoutUserInput | ItemUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ItemScalarWhereInput | ItemScalarWhereInput[]
+  }
+
+  export type ItemUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ItemCreateWithoutUserInput, ItemUncheckedCreateWithoutUserInput> | ItemCreateWithoutUserInput[] | ItemUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ItemCreateOrConnectWithoutUserInput | ItemCreateOrConnectWithoutUserInput[]
+    upsert?: ItemUpsertWithWhereUniqueWithoutUserInput | ItemUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ItemCreateManyUserInputEnvelope
+    set?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    disconnect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    delete?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    connect?: ItemWhereUniqueInput | ItemWhereUniqueInput[]
+    update?: ItemUpdateWithWhereUniqueWithoutUserInput | ItemUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ItemUpdateManyWithWhereWithoutUserInput | ItemUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ItemScalarWhereInput | ItemScalarWhereInput[]
   }
 
@@ -5282,6 +5501,26 @@ export namespace Prisma {
     create: XOR<ContainerCreateWithoutItemsInput, ContainerUncheckedCreateWithoutItemsInput>
   }
 
+  export type UserCreateWithoutItemsInput = {
+    firebaseUid: string
+    email: string
+    name: string
+    createdAt?: Date | string
+  }
+
+  export type UserUncheckedCreateWithoutItemsInput = {
+    id?: number
+    firebaseUid: string
+    email: string
+    name: string
+    createdAt?: Date | string
+  }
+
+  export type UserCreateOrConnectWithoutItemsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutItemsInput, UserUncheckedCreateWithoutItemsInput>
+  }
+
   export type ContainerUpsertWithoutItemsInput = {
     update: XOR<ContainerUpdateWithoutItemsInput, ContainerUncheckedUpdateWithoutItemsInput>
     create: XOR<ContainerCreateWithoutItemsInput, ContainerUncheckedCreateWithoutItemsInput>
@@ -5301,11 +5540,38 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
   }
 
+  export type UserUpsertWithoutItemsInput = {
+    update: XOR<UserUpdateWithoutItemsInput, UserUncheckedUpdateWithoutItemsInput>
+    create: XOR<UserCreateWithoutItemsInput, UserUncheckedCreateWithoutItemsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutItemsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutItemsInput, UserUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type UserUpdateWithoutItemsInput = {
+    firebaseUid?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUncheckedUpdateWithoutItemsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    firebaseUid?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type ItemCreateWithoutContainerInput = {
     createdAt?: Date | string
     name: string
     description?: string | null
     price: number
+    user: UserCreateNestedOneWithoutItemsInput
   }
 
   export type ItemUncheckedCreateWithoutContainerInput = {
@@ -5314,6 +5580,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     price: number
+    userId: number
   }
 
   export type ItemCreateOrConnectWithoutContainerInput = {
@@ -5352,6 +5619,50 @@ export namespace Prisma {
     description?: StringNullableFilter<"Item"> | string | null
     price?: FloatFilter<"Item"> | number
     containerId?: IntNullableFilter<"Item"> | number | null
+    userId?: IntFilter<"Item"> | number
+  }
+
+  export type ItemCreateWithoutUserInput = {
+    createdAt?: Date | string
+    name: string
+    description?: string | null
+    price: number
+    container?: ContainerCreateNestedOneWithoutItemsInput
+  }
+
+  export type ItemUncheckedCreateWithoutUserInput = {
+    id?: number
+    createdAt?: Date | string
+    name: string
+    description?: string | null
+    price: number
+    containerId?: number | null
+  }
+
+  export type ItemCreateOrConnectWithoutUserInput = {
+    where: ItemWhereUniqueInput
+    create: XOR<ItemCreateWithoutUserInput, ItemUncheckedCreateWithoutUserInput>
+  }
+
+  export type ItemCreateManyUserInputEnvelope = {
+    data: ItemCreateManyUserInput | ItemCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ItemUpsertWithWhereUniqueWithoutUserInput = {
+    where: ItemWhereUniqueInput
+    update: XOR<ItemUpdateWithoutUserInput, ItemUncheckedUpdateWithoutUserInput>
+    create: XOR<ItemCreateWithoutUserInput, ItemUncheckedCreateWithoutUserInput>
+  }
+
+  export type ItemUpdateWithWhereUniqueWithoutUserInput = {
+    where: ItemWhereUniqueInput
+    data: XOR<ItemUpdateWithoutUserInput, ItemUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ItemUpdateManyWithWhereWithoutUserInput = {
+    where: ItemScalarWhereInput
+    data: XOR<ItemUpdateManyMutationInput, ItemUncheckedUpdateManyWithoutUserInput>
   }
 
   export type ItemCreateManyContainerInput = {
@@ -5360,6 +5671,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     price: number
+    userId: number
   }
 
   export type ItemUpdateWithoutContainerInput = {
@@ -5367,6 +5679,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    user?: UserUpdateOneRequiredWithoutItemsNestedInput
   }
 
   export type ItemUncheckedUpdateWithoutContainerInput = {
@@ -5375,6 +5688,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ItemUncheckedUpdateManyWithoutContainerInput = {
@@ -5383,6 +5697,42 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ItemCreateManyUserInput = {
+    id?: number
+    createdAt?: Date | string
+    name: string
+    description?: string | null
+    price: number
+    containerId?: number | null
+  }
+
+  export type ItemUpdateWithoutUserInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    container?: ContainerUpdateOneWithoutItemsNestedInput
+  }
+
+  export type ItemUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    containerId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ItemUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    containerId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 

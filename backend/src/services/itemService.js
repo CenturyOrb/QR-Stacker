@@ -4,8 +4,8 @@ export async function getAllItems() {
 	return await getAll();
 }
 
-export async function createItem(data) { 
-	return await create(data);
+export async function createItem(data, user) { 
+	return await create(data, user);
 }
 
 export async function updateItem(id, data) { 

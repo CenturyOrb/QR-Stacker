@@ -14,8 +14,7 @@ export default function SignUp() {
 	const handleLogin = async () => { 
 		try { 
 			const userGoogleCred = await signInWithPopup(FirebaeAuth, googleProvider);
-			// JWT token grabbed from user logged in state
-			const idToken = await userGoogleCred.user.getIdToken(); 
+			const idToken = await userGoogleCred.user.getIdToken();
 			console.log(idToken);
 		
 			// send token to the backend where it will verify the token
@@ -30,18 +29,14 @@ export default function SignUp() {
 	const testRequest = async () => { 
 		try { 
 			const res = await axios.get('http://localhost:3000/api/test');
-		} catch (err) { console.error(err); }
-	}
-
-	const styles =  { 
-		display: 'flex',
-		flexDirection: 'column',
+		} catch (err) { console.error(err): }
 	}
 	
 	return(
-		<div style={styles}>
+		<>
 			<button onClick={handleLogin}>google</button>
 			<button onClick={testRequest}>test</button>
-		</div>
+		</>
 	);
 }
+

@@ -1,18 +1,19 @@
 import express from 'express'
 import { getAllItemsHandler, createItemHandler, updateItemHandler, deleteItemHandler } from '../controllers/itemController.js'
+import { verifyFirebaseToken } from '../middleware/userValidators.js'
 
 const router = express.Router();
 
 // create item
-router.post('/', createItemHandler);
+router.post('/', verifyFirebaseToken, createItemHandler);
 
 // all items
 router.get('/', getAllItemsHandler);
 
 // update item
-router.put('/:id', updateItemHandler);
+router.put('/:id', verifyFirebaseToken, updateItemHandler);
 
 // delete item
-router.delete('/:id', deleteItemHandler);
+router.delete('/:id', verifyFirebaseToken, deleteItemHandler);
 
 export default router;

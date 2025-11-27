@@ -4,8 +4,10 @@ export async function getAll()	{
 	return await prisma.item.findMany();
 }
 
-export async function create(data) { 
-	return await prisma.item.create({ data });
+export async function create(itemData, user) { 
+	return await prisma.item.create({ 
+		data: { ...itemData, userUID: user.uid },
+	});
 }
 
 export async function update(id, data) { 

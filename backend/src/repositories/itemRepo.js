@@ -1,7 +1,9 @@
 import prisma from '../config/db.js'
 
-export async function getAll()	{
-	return await prisma.item.findMany();
+export async function getAll(user)	{
+	return await prisma.item.findMany({
+		where: { userUID: user.uid },
+	});
 }
 
 export async function create(itemData, user) { 

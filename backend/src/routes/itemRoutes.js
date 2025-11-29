@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/', verifyFirebaseToken, createItemHandler);
 
 // all items
-router.get('/', getAllItemsHandler);
+router.get('/', verifyFirebaseToken, getAllItemsHandler);
 
 // update item
 router.put('/:id', verifyFirebaseToken, updateItemHandler);

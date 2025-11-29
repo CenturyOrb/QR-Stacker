@@ -3,7 +3,7 @@ import { getAllItems, createItem, updateItem, deleteItem } from '../services/ite
 // status code reference: 
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#successful_responses
 export async function getAllItemsHandler(req, res) { 
-	const result = await getAllItems();
+	const result = await getAllItems(req.user);
 	res.status(200).json(result);
 }
 

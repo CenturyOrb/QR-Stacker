@@ -1,7 +1,7 @@
 import { getAll, create, update, remove } from '../repositories/itemRepo.js'
 
-export async function getAllItems() { 
-	return await getAll();
+export async function getAllItems(user) { 
+	return await getAll(user);
 }
 
 export async function createItem(data, user) { 

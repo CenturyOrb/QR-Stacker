@@ -2,6 +2,7 @@ import { getAllItems, createItem, updateItem, deleteItem } from '../services/ite
 
 // status code reference: 
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#successful_responses
+
 export async function getAllItemsHandler(req, res) { 
 	const result = await getAllItems(req.user);
 	res.status(200).json(result);
@@ -15,7 +16,7 @@ export async function createItemHandler(req, res) {
 export async function updateItemHandler(req, res) { 
 	const data = req.body;
 	const id = parseInt(req.params.id);
-	const updatedItem = await updateItem(id, data);
+	const updatedItem = await updateItem(id, data, req.user);
 	res.status(200).json(updatedItem);
 }
 

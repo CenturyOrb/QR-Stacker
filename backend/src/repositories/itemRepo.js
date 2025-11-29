@@ -12,9 +12,9 @@ export async function create(itemData, user) {
 	});
 }
 
-export async function update(id, data) { 
+export async function update(id, data, user) { 
 	return await prisma.item.update({
-		where: { id },	
+		where: { id, userUID: user.uid },	
 		data	
 	});
 }

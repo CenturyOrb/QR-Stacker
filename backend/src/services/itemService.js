@@ -8,8 +8,8 @@ export async function createItem(data, user) {
 	return await create(data, user);
 }
 
-export async function updateItem(id, data) { 
-	return await update(id, data);
+export async function updateItem(id, data, user) { 
+	return await update(id, data, user);
 }
 
 export async function deleteItem(id) { 

@@ -1,16 +1,29 @@
-# React + Vite
+# QR Stacker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**QR Stacker** is a lightweight inventory and checkout system built for small-scale sellers—perfect for Facebook Marketplace pickups, garage sales, flea markets, pop-ups, and community events.
 
-Currently, two official plugins are available:
+Have lots of items in varying (non‑new) conditions? QR Stacker helps you organize them, share details instantly, and get paid fast—without awkward back‑and‑forth or manual price checks.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Create items quickly** with price, condition, photos, and notes
+* **Generate printable QR codes** for each item
+* **Let buyers scan** to view item details on their phone
+* **Enable fast payments** directly from the item page
+* **Track availability** (available / reserved / sold)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Why QR Stacker?
+
+No need to answer all the common question customers have such as item specific conditions, similar items, etc! 
+Great for settings such as:
+* Flee markets
+* Garage sales
+* facebook marketplace
+
+---
+
+*Simple for customers simple for merchant.*

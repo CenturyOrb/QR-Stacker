@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import styles from './sidebar.module.css'
 import globalStyles from '../globalStyles.module.css'
@@ -6,12 +6,18 @@ import { Colors } from '../../constants.js'
 import { ViewContext } from '../../App.jsx'
 
 import NavButton from './NavButton.jsx'
+import MOdal from '../modal/Modal.jsx'
 import { MdOutlineInventory2 } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { IoSettingsOutline } from "react-icons/io5";
 
 const SideBar = () => { 
 	const { view, setView } = useContext(ViewContext);
+	const [ isToggleSignInModal, setToggleSignInModal ] = useState(false);
+
+	useEffect(() => {
+		console.log(isToggleSignInModal);
+	}, [isToggleSignInModal]);
 
 	const changeCurrentSelected = (i) => { 
 		setView(
@@ -37,12 +43,16 @@ const SideBar = () => {
 				</ul>
 			</nav>
 
-			<Link 
-				to='/signup'
+			<button 
 				className={styles.user_container}
+				onClick={(e) => setToggleSignInModal(!isToggleSignInModal)}
 			>
-				John Doe
-			</Link>
+				Sign In
+			</button>
+	
+			{isToggleSignInModal && (
+				
+			)}
 		</section>
 	);
 }

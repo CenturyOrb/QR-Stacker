@@ -30,6 +30,7 @@ export default function SignUp() {
 	const testRequest = async () => { 
 		try { 
 			const res = await axios.get('http://localhost:3000/api/test');
+			console.log(res);
 		} catch (err) { console.error(err); }
 	}
 
@@ -40,8 +41,30 @@ export default function SignUp() {
 	
 	return(
 		<div style={styles}>
-			<button onClick={handleLogin}>google</button>
-			<button onClick={testRequest}>test</button>
+			return (
+    <button
+      onClick={handleLogin}
+      style={{
+        padding: "0.6rem 1rem",
+        border: "none",
+        borderRadius: "6px",
+        backgroundColor: "#4285F4",
+        color: "white",
+        fontWeight: "bold",
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        gap: "0.5rem",
+      }}
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+        alt="Google logo"
+        style={{ width: "20px", height: "20px" }}
+      />
+      Sign in with Google
+    </button>
+  );
 		</div>
 	);
 }

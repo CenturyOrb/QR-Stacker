@@ -21,6 +21,10 @@ app.use(
 // routes
 app.use('/api/item', itemRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/test', (req, res, next) => {
+	console.log('test');
+	res.send('Test success');
+});
 
 // error handling for non existent route, this is still a regular middleware
 app.use((req, res, next) => { 

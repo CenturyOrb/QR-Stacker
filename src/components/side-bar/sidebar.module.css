@@ -20,6 +20,8 @@
 }
 
 .user_container { 
+	text-align: start;
+	color: white;
 	border-radius: 0.75rem;
 	padding: 1rem;
 	margin-top: auto;

@@ -13,9 +13,9 @@ import { IoSettingsOutline } from "react-icons/io5";
 
 function App() {
 	const [view, setView] = useState([
-		{ content: 'Dashboard', selected: true, icon: RxDashboard },         	
-        { content: 'Inventory', selected: false, icon: MdOutlineInventory2 },
-        { content: 'Setting', selected: false, icon: IoSettingsOutline}	
+		{ content: 'Dashboard', selected: true, icon: RxDashboard, path: '/' },         	
+        { content: 'Inventory', selected: false, icon: MdOutlineInventory2, path: '/inventory' },
+        { content: 'Setting', selected: false, icon: IoSettingsOutline, path: '/setting' }	
 	]);
 
 	return (
@@ -25,6 +25,8 @@ function App() {
 				<Routes>
           			<Route path="/" element={<Main />} />
 					<Route path="/signup" element={<SignUp />} />
+					<Route path="/setting" element={<p>working lol</p>}/>
+					<Route path="/inventory" element={<p>workign lol</p>}/>
         		</Routes>
 			</ViewContext.Provider>
 		</div> 

@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react'
+import { Link } from 'react-router-dom';
 import styles from './sidebar.module.css'
 import globalStyles from '../globalStyles.module.css'
 import { Colors } from '../../constants.js'
@@ -36,9 +37,12 @@ const SideBar = () => {
 				</ul>
 			</nav>
 
-			<div className={styles.user_container}> 
-				John Doe	
-			</div>
+			<Link 
+				to='/signup'
+				className={styles.user_container}
+			>
+				John Doe
+			</Link>
 		</section>
 	);
 }

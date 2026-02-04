@@ -14,7 +14,7 @@ router.post('/', verifyFirebaseToken, createItemHandler);
 router.get('/', verifyFirebaseToken, getAllItemsHandler);
 
 // update item
-// TODO: check if id of item is correlated with requesting user
+// TODO: add request body field validators
 router.put('/:id', verifyFirebaseToken, updateItemHandler);
 
 // delete item

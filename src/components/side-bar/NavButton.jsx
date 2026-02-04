@@ -7,8 +7,6 @@ const NavButton = ({data, changeSelected}) => {
 		? styles.highlight
 		: null;
 	
-	const path = `/${data.content.toLowerCase()}`;
-
 	return(
 		<motion.li
 		    onClick={changeSelected}
@@ -16,14 +14,13 @@ const NavButton = ({data, changeSelected}) => {
 		    whileTap={{ scale: 0.95 }}
 		>
 			<Link 
-				to={path}
+				to={data.path}
 				className={`${styles.nav_button} ${highlight}`}
 			>
 		    	{data.icon && <data.icon size={24} style={{ marginRight: '8px' }} />}
 		    	<span style={{ verticalAlign: '0' }}>{data.content}</span>
 			</Link>
 		</motion.li>
-
 	);
 }
 

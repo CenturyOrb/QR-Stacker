@@ -19,8 +19,8 @@ export async function update(id, data, user) {
 	});
 }
 
-export async function remove(id) {
+export async function remove(id, user) {
 	return await prisma.item.delete({
-		where: { id }
+		where: { id, userUID: user.uid }
 	});
 }

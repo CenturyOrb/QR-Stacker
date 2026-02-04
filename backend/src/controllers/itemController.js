@@ -22,6 +22,6 @@ export async function updateItemHandler(req, res) {
 
 export async function deleteItemHandler(req, res) { 
 	const id = parseInt(req.params.id);
-	await deleteItem(id);
+	await deleteItem(id, req.user);
 	res.status(204).send();
 };

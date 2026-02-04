@@ -12,6 +12,6 @@ export async function updateItem(id, data, user) {
 	return await update(id, data, user);
 }
 
-export async function deleteItem(id) { 
-	return await remove(id);
+export async function deleteItem(id, user) { 
+	return await remove(id, user);
 }

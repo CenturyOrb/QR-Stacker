@@ -1,0 +1,15 @@
+.google_button {
+	display: flex;
+	align-items: center;
+	border: 1px solid lightgrey;
+	gap: 0.5rem;
+
+	padding: 0.5rem;
+	border: 1px solid lightgrey;
+	border-radius: 0.25rem;
+}
+
+.icon {
+	height: 1rem;
+	width: 1rem;
+}

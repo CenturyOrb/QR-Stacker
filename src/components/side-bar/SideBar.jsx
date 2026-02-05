@@ -1,10 +1,11 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import styles from './sidebar.module.css'
 import { Colors } from '../../constants.jsx'
 import { ViewContext } from '../../App.jsx'
 
 import NavButton from './NavButton.jsx'
+import GoogleButton from '../google-button/GoogleButton.jsx'
 import Modal from '../modal/Modal.jsx'
 import { MdOutlineInventory2 } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
@@ -15,10 +16,6 @@ const SideBar = () => {
 	const [ isToggleSignInModal, setToggleSignInModal ] = useState(false);
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
-
-	useEffect(() => {
-		console.log(isToggleSignInModal);
-	}, [isToggleSignInModal]);
 
 	const changeCurrentSelected = (i) => { 
 		setView(
@@ -57,7 +54,7 @@ const SideBar = () => {
 	
 			{isToggleSignInModal && (
 				<Modal setModal={setToggleSignInModal}>
-					<h2>Sign In</h2>										
+					<h2 style={{color: "grey"}} >Sign In</h2>										
 					<div className={styles.sign_in_reg}> 
 						<input
             				type="email"
@@ -79,6 +76,8 @@ const SideBar = () => {
                         	Sign In
                         </button>
 					</div>
+					<span style={{color: "grey"}}>OR</span>
+					<GoogleButton/>
 				</Modal>
 			)}
 		</section>

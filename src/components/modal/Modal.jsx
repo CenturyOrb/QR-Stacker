@@ -1,14 +1,11 @@
-import { useContext } from 'react'
-import { AppContext } from '../../App.js'
 import styles from './modal.module.css'
 
-function Modal ({children}) {
+function Modal ({children, setModal}) {
 	
-	
-	// close modal when clicing on background
 	return(
 		<div 
 			className={styles.modal}
+			onClick={() => setModal(toggle => !toggle)}
 		>
 			<div 
 				className={styles.modal_content}

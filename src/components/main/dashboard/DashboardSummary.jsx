@@ -1,5 +1,5 @@
 import styles from './dashboardsummary.module.css'
-import { Colors } from '../../../constants.js'
+import { Colors } from '../../../constants.jsx'
 import { IoSearch } from 'react-icons/io5'
 import { FaRegBell } from 'react-icons/fa'
 import { CiFileOn } from 'react-icons/ci'

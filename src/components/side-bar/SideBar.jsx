@@ -11,11 +11,37 @@ import { MdOutlineInventory2 } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { IoSettingsOutline } from "react-icons/io5";
 
+import axios from 'axios'
+import { FirebaeAuth } from '../../firebase/firebase-config.js'
+import { 
+	GoogleAuthProvider,
+	signInWithPopup,
+	onAuthStateChanged
+} from 'firebase/auth'
+
+const googleProvider = new GoogleAuthProvider();
+
 const SideBar = () => { 
 	const { view, setView } = useContext(ViewContext);
 	const [ isToggleSignInModal, setToggleSignInModal ] = useState(false);
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
+
+	const handleLogin = async () => {                                                 			
+    	try { 
+    		const userGoogleCred = await signInWithPopup(FirebaeAuth, googleProvider);
+    		// JWT token grabbed from user logged in state
+    		const idToken = await userGoogleCred.user.getIdToken(); 
+    	
+    		// send token to the backend where it will verify the token
+    		const res = await axios.get('http://localhost:3000/api/auth/login', {
+    			headers: { 
+    				Authorization: `Bearer ${idToken}`,
+    			}
+    		})
+			setToggleSignInModal(false);
+    	} catch (err) { console.error(err) } // error here
+    }
 
 	const changeCurrentSelected = (i) => { 
 		setView(
@@ -24,10 +50,6 @@ const SideBar = () => {
 				({ ...item, selected: j === i })
 			)
 		);	
-	}
-
-	const testClick = () => {
-		console.log('test click');
 	}
 
 	return (
@@ -49,7 +71,7 @@ const SideBar = () => {
 				className={styles.user_container}
 				onClick={(e) => setToggleSignInModal(!isToggleSignInModal)}
 			>
-				Sign In
+				Sign In 
 			</button>
 	
 			{isToggleSignInModal && (
@@ -77,7 +99,7 @@ const SideBar = () => {
                         </button>
 					</div>
 					<span style={{color: "grey"}}>OR</span>
-					<GoogleButton/>
+					<GoogleButton login={handleLogin}/>
 				</Modal>
 			)}
 		</section>

@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import styles from './app.module.css'
 import SideBar from './components/side-bar/SideBar.jsx'
 import Main from './components/main/Main.jsx'
+import Inventory from './components/inventory/Inventory.jsx'
 import SignUp from './components/signup/SignUp.jsx'
 
 export const ViewContext = createContext();
@@ -26,7 +27,7 @@ function App() {
           			<Route path="/" element={<Main />} />
 					<Route path="/signup" element={<SignUp />} />
 					<Route path="/setting" element={<p>working lol</p>}/>
-					<Route path="/inventory" element={<p>workign lol</p>}/>
+					<Route path="/inventory" element={<Inventory />}/>
         		</Routes>
 			</ViewContext.Provider>
 		</div> 

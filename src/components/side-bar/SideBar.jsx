@@ -32,6 +32,7 @@ const SideBar = () => {
     		const userGoogleCred = await signInWithPopup(FirebaeAuth, googleProvider);
     		// JWT token grabbed from user logged in state
     		const idToken = await userGoogleCred.user.getIdToken(); 
+			console.log(idToken);
     	
     		// send token to the backend where it will verify the token
     		const res = await axios.get('http://localhost:3000/api/auth/login', {

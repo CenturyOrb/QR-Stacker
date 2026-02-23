@@ -10,7 +10,7 @@ const router = express.Router();
 // TODO: validate new item fields with validators, use express validators
 router.post('/', verifyFirebaseToken, createItemHandler);
 
-// all items
+// View all all items 
 router.get('/', verifyFirebaseToken, getAllItemsHandler);
 
 // update item

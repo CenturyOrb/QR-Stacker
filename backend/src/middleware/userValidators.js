@@ -3,7 +3,6 @@ import admin from '../../firebase/firebase.js'
 export async function verifyFirebaseToken(req, res, next) { 
 	// grabs authorization bearer token from request header
 	const authHeader = req.headers.authorization;
-	console.log(authHeader);
 	const error = new Error('Invalid token');
 	error.status = 401;
 	
@@ -15,7 +14,6 @@ export async function verifyFirebaseToken(req, res, next) {
 		const idToken = authHeader.split(' ')[1];
 		// checks ur idtoken if valid: returns user data
 		const decodedToken = await admin.auth().verifyIdToken(idToken); 
-		console.log(decodedToken);
 		req.user = decodedToken; // attach user derived from firebase id provider token
 		next();
 	} catch (err) {

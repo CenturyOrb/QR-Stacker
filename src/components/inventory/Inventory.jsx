@@ -9,6 +9,19 @@ import Modal from '../modal/Modal.jsx'
 
 const Inventory = () => {
 	const [ isToggleNewItem , setToggleNewItem ] = useState(false);
+	const [ itemImage, setItemImage ] = useState(null);
+	const [ itemName, setItemName] = useState('');
+	const [ itemDescription, setItemDescription ] = useState('');
+	const [ itemPrice, setItemPrice ] = useState('');
+
+	function handleSubmit() {
+		setItemImage(null);
+		setItemName('');
+		setItemDescription('');
+		setItemPrice('');
+		setToggleNewItem(false);
+		// axios post to backend
+	}
 
 	return(
 		<main className={styles.inventory}>
@@ -37,21 +50,37 @@ const Inventory = () => {
 				<Modal setModal={setToggleNewItem}>
 					<div className={styles.form_container}>
 						<div className={styles.image_section}>
-							<input type="file"/>
+							<input type="file"
+								accept='image/png, image/jpeg'
+								onChange={(e) => setItemImage(e.target.files[0])}
+							/>
 						</div>
 						<div className={styles.details_section}>
 							<div className={styles.input_container}>
-								Item Name:
-								<input type="text"/>
+								<p>Item Name:</p>
+								<input type="text" 
+									value={itemName} 
+									onChange={(e) => setItemName(e.target.value)}
+								/>
 							</div>
 							<div className={styles.input_container}>
-								Item Description:
-                            	<input type="text"/>
+								<p>Item Description:</p>
+                            	<textarea className={styles.test} 
+									value={itemDescription}
+									onChange={(e) => setItemDescription(e.target.value)}
+								/>
                             </div>
 							<div className={styles.input_container}>
-								Item Price:
-                            	<input type="text"/>
+								<p>Item Price:</p>
+                            	<input type="number" 
+									value={itemPrice}
+									onChange={(e) => setItemPrice(e.target.value)}
+									placeholder='0.00'
+								/>
                             </div>
+							<button onClick={handleSubmit}>
+                            	add
+                            </button>
                         </div>
 					</div>
 				</Modal>

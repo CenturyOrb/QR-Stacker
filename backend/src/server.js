@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
+import multer from 'multer'
 const app = express();
 const port = 3000; // this should be set in .env later
 
@@ -21,9 +22,22 @@ app.use(
 // routes
 app.use('/api/item', itemRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/test', (req, res, next) => {
-	console.log('test');
-	res.send('Test success');
+
+// route fuckery
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'resources/user/testUser')
+  },
+  filename: (req, file, cb) => {
+    cb(null, 'TestName.png');
+  },
+});
+const upload = multer({storage});
+app.post("/api/test", upload.single("image"), (req, res) => {
+  	console.log("BODY:", req.body);
+  	console.log("FILE:", req.file);
+
+  	res.send("Test success");
 });
 
 // error handling for non existent route, this is still a regular middleware

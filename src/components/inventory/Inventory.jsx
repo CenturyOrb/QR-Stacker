@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import styles from './inventory.module.css'
-import {Colors } from '../../constants.jsx'
+import { Colors } from '../../constants.jsx'
 import { IoSearch } from 'react-icons/io5'
 import { FaRegBell } from 'react-icons/fa'
+import { FirebaeAuth } from '../../firebase/firebase-config.js'
+import axios from 'axios'
 
 import SearchBar from '../search-bar/SearchBar.jsx'
 import Modal from '../modal/Modal.jsx'
@@ -14,13 +16,34 @@ const Inventory = () => {
 	const [ itemDescription, setItemDescription ] = useState('');
 	const [ itemPrice, setItemPrice ] = useState('');
 
-	function handleSubmit() {
+	const handleSubmit = async () => {
 		setItemImage(null);
 		setItemName('');
 		setItemDescription('');
 		setItemPrice('');
 		setToggleNewItem(false);
 		// axios post to backend
+		const itemData = new FormData();
+		itemData.append('image', itemImage);
+		itemData.append('name', itemName);
+		itemData.append('description', itemDescription);
+		itemData.append('price', itemPrice);
+
+		// user session access token
+		const idToken = FirebaeAuth.currentUser.accessToken;
+		  
+		try {
+    		const res = await axios.post(
+      			"http://localhost:3000/api/item", 
+				itemData,
+				{	
+					headers: { Authorization: `Bearer ${idToken}` }
+				}
+    		);
+
+  		} catch (err) {
+    		console.error(err.response?.data || err.message);
+  		}
 	}
 
 	return(

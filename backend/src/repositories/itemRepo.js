@@ -7,6 +7,8 @@ export async function getAll(user)	{
 }
 
 export async function create(itemData, user) { 
+	if (typeof itemData.price === 'string');
+	itemData.price = parseFloat(itemData.price);
 	return await prisma.item.create({ 
 		data: { ...itemData, userUID: user.uid },
 	});

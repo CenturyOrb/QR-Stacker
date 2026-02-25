@@ -2,9 +2,9 @@ import express from 'express'
 import multer from 'multer'
 import { getAllItemsHandler, createItemHandler, updateItemHandler, deleteItemHandler } from '../controllers/itemController.js'
 import { verifyFirebaseToken } from '../middleware/userValidators.js'
+import { upload } from "../middleware/upload.js";
 
 const router = express.Router();
-const upload = multer({ dest: 'resources/user/testUser/'});
 // TODO: route for finding specific item by name
 
 // create item

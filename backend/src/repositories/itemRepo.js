@@ -1,4 +1,5 @@
 import prisma from '../config/db.js'
+import multer from 'multer'
 
 export async function getAll(user)	{
 	return await prisma.item.findMany({
@@ -7,8 +8,13 @@ export async function getAll(user)	{
 }
 
 export async function create(itemData, user) { 
-	if (typeof itemData.price === 'string');
-	itemData.price = parseFloat(itemData.price);
+	if (typeof itemData.price === 'string')
+		itemData.price = parseFloat(itemData.price);
+
+	// save image to user resource
+	const upload = multer({ dest: `resources/user/${user.uid}` })
+	upload.single('image');
+
 	return await prisma.item.create({ 
 		data: { ...itemData, userUID: user.uid },
 	});

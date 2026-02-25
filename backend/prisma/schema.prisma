@@ -12,6 +12,7 @@ model Item {
   uuid      String   @id @default(uuid())
   createdAt DateTime @default(now())
   name      String   @db.VarChar(255)
+  imgPath   String 	 @db.VarChar(255) @map("image_soruce")
   description   String?
   price		Float
 

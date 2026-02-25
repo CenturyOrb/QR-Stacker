@@ -1130,6 +1130,7 @@ export namespace Prisma {
     uuid: string | null
     createdAt: Date | null
     name: string | null
+    imgPath: string | null
     description: string | null
     price: number | null
     containerId: number | null
@@ -1140,6 +1141,7 @@ export namespace Prisma {
     uuid: string | null
     createdAt: Date | null
     name: string | null
+    imgPath: string | null
     description: string | null
     price: number | null
     containerId: number | null
@@ -1150,6 +1152,7 @@ export namespace Prisma {
     uuid: number
     createdAt: number
     name: number
+    imgPath: number
     description: number
     price: number
     containerId: number
@@ -1172,6 +1175,7 @@ export namespace Prisma {
     uuid?: true
     createdAt?: true
     name?: true
+    imgPath?: true
     description?: true
     price?: true
     containerId?: true
@@ -1182,6 +1186,7 @@ export namespace Prisma {
     uuid?: true
     createdAt?: true
     name?: true
+    imgPath?: true
     description?: true
     price?: true
     containerId?: true
@@ -1192,6 +1197,7 @@ export namespace Prisma {
     uuid?: true
     createdAt?: true
     name?: true
+    imgPath?: true
     description?: true
     price?: true
     containerId?: true
@@ -1289,6 +1295,7 @@ export namespace Prisma {
     uuid: string
     createdAt: Date
     name: string
+    imgPath: string
     description: string | null
     price: number
     containerId: number | null
@@ -1318,6 +1325,7 @@ export namespace Prisma {
     uuid?: boolean
     createdAt?: boolean
     name?: boolean
+    imgPath?: boolean
     description?: boolean
     price?: boolean
     containerId?: boolean
@@ -1330,6 +1338,7 @@ export namespace Prisma {
     uuid?: boolean
     createdAt?: boolean
     name?: boolean
+    imgPath?: boolean
     description?: boolean
     price?: boolean
     containerId?: boolean
@@ -1342,6 +1351,7 @@ export namespace Prisma {
     uuid?: boolean
     createdAt?: boolean
     name?: boolean
+    imgPath?: boolean
     description?: boolean
     price?: boolean
     containerId?: boolean
@@ -1354,13 +1364,14 @@ export namespace Prisma {
     uuid?: boolean
     createdAt?: boolean
     name?: boolean
+    imgPath?: boolean
     description?: boolean
     price?: boolean
     containerId?: boolean
     userUID?: boolean
   }
 
-  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"uuid" | "createdAt" | "name" | "description" | "price" | "containerId" | "userUID", ExtArgs["result"]["item"]>
+  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"uuid" | "createdAt" | "name" | "imgPath" | "description" | "price" | "containerId" | "userUID", ExtArgs["result"]["item"]>
   export type ItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     container?: boolean | Item$containerArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -1384,6 +1395,7 @@ export namespace Prisma {
       uuid: string
       createdAt: Date
       name: string
+      imgPath: string
       description: string | null
       price: number
       containerId: number | null
@@ -1816,6 +1828,7 @@ export namespace Prisma {
     readonly uuid: FieldRef<"Item", 'String'>
     readonly createdAt: FieldRef<"Item", 'DateTime'>
     readonly name: FieldRef<"Item", 'String'>
+    readonly imgPath: FieldRef<"Item", 'String'>
     readonly description: FieldRef<"Item", 'String'>
     readonly price: FieldRef<"Item", 'Float'>
     readonly containerId: FieldRef<"Item", 'Int'>
@@ -4380,6 +4393,7 @@ export namespace Prisma {
     uuid: 'uuid',
     createdAt: 'createdAt',
     name: 'name',
+    imgPath: 'imgPath',
     description: 'description',
     price: 'price',
     containerId: 'containerId',
@@ -4501,6 +4515,7 @@ export namespace Prisma {
     uuid?: StringFilter<"Item"> | string
     createdAt?: DateTimeFilter<"Item"> | Date | string
     name?: StringFilter<"Item"> | string
+    imgPath?: StringFilter<"Item"> | string
     description?: StringNullableFilter<"Item"> | string | null
     price?: FloatFilter<"Item"> | number
     containerId?: IntNullableFilter<"Item"> | number | null
@@ -4513,6 +4528,7 @@ export namespace Prisma {
     uuid?: SortOrder
     createdAt?: SortOrder
     name?: SortOrder
+    imgPath?: SortOrder
     description?: SortOrderInput | SortOrder
     price?: SortOrder
     containerId?: SortOrderInput | SortOrder
@@ -4528,6 +4544,7 @@ export namespace Prisma {
     NOT?: ItemWhereInput | ItemWhereInput[]
     createdAt?: DateTimeFilter<"Item"> | Date | string
     name?: StringFilter<"Item"> | string
+    imgPath?: StringFilter<"Item"> | string
     description?: StringNullableFilter<"Item"> | string | null
     price?: FloatFilter<"Item"> | number
     containerId?: IntNullableFilter<"Item"> | number | null
@@ -4540,6 +4557,7 @@ export namespace Prisma {
     uuid?: SortOrder
     createdAt?: SortOrder
     name?: SortOrder
+    imgPath?: SortOrder
     description?: SortOrderInput | SortOrder
     price?: SortOrder
     containerId?: SortOrderInput | SortOrder
@@ -4558,6 +4576,7 @@ export namespace Prisma {
     uuid?: StringWithAggregatesFilter<"Item"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Item"> | Date | string
     name?: StringWithAggregatesFilter<"Item"> | string
+    imgPath?: StringWithAggregatesFilter<"Item"> | string
     description?: StringNullableWithAggregatesFilter<"Item"> | string | null
     price?: FloatWithAggregatesFilter<"Item"> | number
     containerId?: IntNullableWithAggregatesFilter<"Item"> | number | null
@@ -4655,6 +4674,7 @@ export namespace Prisma {
     uuid?: string
     createdAt?: Date | string
     name: string
+    imgPath: string
     description?: string | null
     price: number
     container?: ContainerCreateNestedOneWithoutItemsInput
@@ -4665,6 +4685,7 @@ export namespace Prisma {
     uuid?: string
     createdAt?: Date | string
     name: string
+    imgPath: string
     description?: string | null
     price: number
     containerId?: number | null
@@ -4675,6 +4696,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    imgPath?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     container?: ContainerUpdateOneWithoutItemsNestedInput
@@ -4685,6 +4707,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    imgPath?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     containerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -4695,6 +4718,7 @@ export namespace Prisma {
     uuid?: string
     createdAt?: Date | string
     name: string
+    imgPath: string
     description?: string | null
     price: number
     containerId?: number | null
@@ -4705,6 +4729,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    imgPath?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
   }
@@ -4713,6 +4738,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    imgPath?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     containerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -4884,6 +4910,7 @@ export namespace Prisma {
     uuid?: SortOrder
     createdAt?: SortOrder
     name?: SortOrder
+    imgPath?: SortOrder
     description?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
@@ -4899,6 +4926,7 @@ export namespace Prisma {
     uuid?: SortOrder
     createdAt?: SortOrder
     name?: SortOrder
+    imgPath?: SortOrder
     description?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
@@ -4909,6 +4937,7 @@ export namespace Prisma {
     uuid?: SortOrder
     createdAt?: SortOrder
     name?: SortOrder
+    imgPath?: SortOrder
     description?: SortOrder
     price?: SortOrder
     containerId?: SortOrder
@@ -5489,6 +5518,7 @@ export namespace Prisma {
     uuid?: string
     createdAt?: Date | string
     name: string
+    imgPath: string
     description?: string | null
     price: number
     user: UserCreateNestedOneWithoutItemsInput
@@ -5498,6 +5528,7 @@ export namespace Prisma {
     uuid?: string
     createdAt?: Date | string
     name: string
+    imgPath: string
     description?: string | null
     price: number
     userUID: string
@@ -5536,6 +5567,7 @@ export namespace Prisma {
     uuid?: StringFilter<"Item"> | string
     createdAt?: DateTimeFilter<"Item"> | Date | string
     name?: StringFilter<"Item"> | string
+    imgPath?: StringFilter<"Item"> | string
     description?: StringNullableFilter<"Item"> | string | null
     price?: FloatFilter<"Item"> | number
     containerId?: IntNullableFilter<"Item"> | number | null
@@ -5546,6 +5578,7 @@ export namespace Prisma {
     uuid?: string
     createdAt?: Date | string
     name: string
+    imgPath: string
     description?: string | null
     price: number
     container?: ContainerCreateNestedOneWithoutItemsInput
@@ -5555,6 +5588,7 @@ export namespace Prisma {
     uuid?: string
     createdAt?: Date | string
     name: string
+    imgPath: string
     description?: string | null
     price: number
     containerId?: number | null
@@ -5590,6 +5624,7 @@ export namespace Prisma {
     uuid?: string
     createdAt?: Date | string
     name: string
+    imgPath: string
     description?: string | null
     price: number
     userUID: string
@@ -5599,6 +5634,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    imgPath?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutItemsNestedInput
@@ -5608,6 +5644,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    imgPath?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     userUID?: StringFieldUpdateOperationsInput | string
@@ -5617,6 +5654,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    imgPath?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     userUID?: StringFieldUpdateOperationsInput | string
@@ -5626,6 +5664,7 @@ export namespace Prisma {
     uuid?: string
     createdAt?: Date | string
     name: string
+    imgPath: string
     description?: string | null
     price: number
     containerId?: number | null
@@ -5635,6 +5674,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    imgPath?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     container?: ContainerUpdateOneWithoutItemsNestedInput
@@ -5644,6 +5684,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    imgPath?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     containerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -5653,6 +5694,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    imgPath?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
     containerId?: NullableIntFieldUpdateOperationsInput | number | null

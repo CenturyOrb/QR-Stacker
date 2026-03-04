@@ -10,6 +10,7 @@ export async function upsertUser(user) {
   	});
 	
 	// mkdir for user files
+	console.log(existingUser);
 	if (!existingUser) {
   		const userDir = path.join("resources/user", uid);
   		fs.mkdirSync(userDir, { recursive: true });

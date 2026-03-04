@@ -1,6 +1,8 @@
 import prisma from '../config/db.js'
 import multer from 'multer'
 import fs from 'fs'
+import path from 'path'
+import {fileURLToPath} from 'url'
 
 export async function getAll(user) {
   const items = await prisma.item.findMany({
@@ -9,19 +11,21 @@ export async function getAll(user) {
 
   const itemsWithImageData = await Promise.all(
     items.map(async (item) => {
-      //const imagePath = path.join('resources', 'user', item.userUID, item.imgPath);
-
       let imageData = null;
+
       try {
-        const fileBuffer = await fs.promises.readFile(`resources/user/${item.userUID}/${item.imgPath}`);
-        imageData = `data:${mimeType};base64,${fileBuffer.toString('base64')}`;
+		const currentPath = path.dirname(fileURLToPath(import.meta.url));
+		const imagePath = path.join(currentPath, '../../resources/user', item.userUID, item.imgPath);
+
+        const fileBuffer = await fs.promises.readFile(imagePath);
+        imageData = `data:image/jpeg;base64,${fileBuffer.toString('base64')}`;
       } catch (err) {
-        console.warn(`Image not found for ${item.imgPath}`);
+        console.warn(`Image not found for ${item.imgPath}:`, err.message);
       }
 
       return {
         ...item,
-        image: imageData, 
+        image: imageData,
       };
     })
   );

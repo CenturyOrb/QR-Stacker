@@ -165,7 +165,7 @@ const Inventory = () => {
 			</div>
 			<div className={styles.grid_container}>
 				{items.map((item) => (
-					<Card item={item} key={item.uuid}/>
+					<Card item={item} key={item.uuid} onClick={(e) => console.log('WIP item preview')}/>
 				))}
 			</div>
 		</main>

@@ -1,16 +1,17 @@
 import express from 'express'
+import multer from 'multer'
 import { getAllItemsHandler, createItemHandler, updateItemHandler, deleteItemHandler } from '../controllers/itemController.js'
 import { verifyFirebaseToken } from '../middleware/userValidators.js'
+import { upload } from "../middleware/upload.js";
 
 const router = express.Router();
-
 // TODO: route for finding specific item by name
 
 // create item
 // TODO: validate new item fields with validators, use express validators
-router.post('/', verifyFirebaseToken, createItemHandler);
+router.post('/', verifyFirebaseToken, upload.single('image'), createItemHandler);
 
-// all items
+// View all all items 
 router.get('/', verifyFirebaseToken, getAllItemsHandler);
 
 // update item

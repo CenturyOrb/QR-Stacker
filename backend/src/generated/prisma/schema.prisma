@@ -9,9 +9,10 @@ datasource db {
 }
 
 model Item {
-  id          Int      @id @default(autoincrement())
+  uuid        String   @id @default(uuid())
   createdAt   DateTime @default(now())
   name        String   @db.VarChar(255)
+  imgPath     String   @map("image_soruce") @db.VarChar(255)
   description String?
   price       Float
 

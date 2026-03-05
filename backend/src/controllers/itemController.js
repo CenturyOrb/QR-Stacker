@@ -9,7 +9,7 @@ export async function getAllItemsHandler(req, res) {
 }
 
 export async function createItemHandler(req, res) { 
-	const newItem = await createItem(req.body, req.user);
+	const newItem = await createItem(req.body, req.user, req.file.filename);
 	res.status(201).json(newItem);
 }
 

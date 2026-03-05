@@ -1,0 +1,32 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid lightgrey;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	box-shadow: 0px 0px 5px 0px #C4C4C4;
+
+	p {
+		padding-left: 0.25rem;
+	}
+}
+
+.item_image {
+	width: 100%;
+	aspect-ratio: 0.95 / 1;	
+	object-fit: cover;
+	border-radius: 0.25rem;
+}
+
+.item_price {
+	padding-top: 0.5rem;
+	font-weight: 600;
+}
+
+.item_name {
+}
+
+.item_location {
+	color: grey;
+	font-size: 0.75rem;
+}

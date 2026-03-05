@@ -105,8 +105,8 @@ const Inventory = () => {
 				<h2 style={                           			
         			{color: Colors.primary_light,
         			fontFamily: 'Poppins, sans-serif',
-        			letterSpacing: '1.5px',
-        			marginTop: '1rem'}
+					letterSpacing: '1px'
+        			}
         			}>
        				Inventory
         		</h2>	
@@ -165,11 +165,7 @@ const Inventory = () => {
 			</div>
 			<div className={styles.grid_container}>
 				{items.map((item) => (
-<<<<<<< HEAD
-					<Card item={item}/>
-=======
 					<Card item={item} key={item.uuid}/>
->>>>>>> 41ecf6f (Style changes)
 				))}
 			</div>
 		</main>

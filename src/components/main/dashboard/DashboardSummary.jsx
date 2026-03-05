@@ -34,22 +34,10 @@ const DashboardSummary = () => {
 			{/* general summary of items and boxes */}
 			<section className={styles.dashboard_content}>
 				<div className={styles.summary}>
-					<Container customStyles={styles.item_summary}>	
-						<CiFileOn size={20}/>
-						Items
-					</Container>
-					<Container customStyles={styles.box_summary}>	
-						<PiStackSimple size={20}/>
-                    	Containers
-                    </Container>
-					<Container customStyles={styles.inventory_summary}>	
-						<HiOutlineRectangleStack size={20}/>
-                    	Inventory
-                    </Container>
-					<Container customStyles={styles.revenue_summary}>	
-						<MdAttachMoney size={20}/>
-                    	Revenue
-                    </Container>
+					<div className={styles.item_summary}><CiFileOn size={20}/>Items</div>
+					<div className={styles.box_summary}><PiStackSimple size={20}/>Containers</div>
+					<div className={styles.inventory_summary}><HiOutlineRectangleStack size={20}/>Inventory</div>
+					<div className={styles.revenue_summary}><MdAttachMoney size={20}/>Revenue</div>
 				</div>
 				<Container customStyles={styles.recent_updates}>
 					Recent updates goes here

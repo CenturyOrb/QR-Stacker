@@ -1,6 +1,10 @@
 .inventory {
 	display: flex;
     flex-direction: column;
+<<<<<<< HEAD
+=======
+	padding: 1.5rem 0;
+>>>>>>> 41ecf6f (Style changes)
     
     color: black;
     flex: 1;
@@ -13,7 +17,11 @@
     justify-content: space-between;
     align-items: center;
                                                   
+<<<<<<< HEAD
     padding: 1.5rem 0;
+=======
+    padding-bottom: 1.5rem;
+>>>>>>> 41ecf6f (Style changes)
     border-bottom: 2px solid rgba(0, 0, 0, 0.07);
     
     section { 

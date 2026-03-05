@@ -165,7 +165,11 @@ const Inventory = () => {
 			</div>
 			<div className={styles.grid_container}>
 				{items.map((item) => (
+<<<<<<< HEAD
 					<Card item={item}/>
+=======
+					<Card item={item} key={item.uuid}/>
+>>>>>>> 41ecf6f (Style changes)
 				))}
 			</div>
 		</main>

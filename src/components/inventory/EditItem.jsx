@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styles from './edititem.module.css'
+import axios from 'axios'
 
 const EditItem = ({item}) => {
-	console.log(item);
 	// preview, handleImageChange, *itemInputFieldStates*
 	const [ preview, setPreview ] = useState(item.image);
 	const [ itemImage, setItemImage ] = useState(null);
@@ -27,7 +27,7 @@ const EditItem = ({item}) => {
 	}
 
 	const handleSubmit = () => {
-		console.log('handleSubmit');
+		console.log(item.uuid);
 	}	
 
 	return (<>

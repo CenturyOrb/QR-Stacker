@@ -8,7 +8,6 @@ const router = express.Router();
 // TODO: route for finding specific item by name
 
 // create item
-// TODO: validate new item fields with validators, use express validators
 router.post('/', verifyFirebaseToken, upload.single('image'), createItemHandler);
 
 // View all all items 

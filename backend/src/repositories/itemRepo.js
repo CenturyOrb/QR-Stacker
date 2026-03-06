@@ -48,7 +48,7 @@ export async function create(itemData, user, filename) {
 
 export async function update(id, data, user) { 
 	return await prisma.item.update({
-		where: { id, userUID: user.uid },	
+		where: { uuid: id, userUID: user.uid },	
 		data	
 	});
 }

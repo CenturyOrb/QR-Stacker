@@ -15,7 +15,7 @@ export async function createItemHandler(req, res) {
 
 export async function updateItemHandler(req, res) { 
 	const data = req.body;
-	const id = parseInt(req.params.id);
+	const id = req.params.id;
 	const updatedItem = await updateItem(id, data, req.user);
 	res.status(200).json(updatedItem);
 }

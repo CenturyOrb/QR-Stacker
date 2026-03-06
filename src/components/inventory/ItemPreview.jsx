@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styles from './itempreview.module.css'
+import EditItem from './EditItem.jsx'
 
 const ItemPreview = ({ item }) => {
 	const [ view, setView ] = useState('preview');
@@ -50,7 +51,7 @@ const previewView = (item, setView) => (
 );
 
 const editView = (item, setView) => (
-	<p>edit view</p>	
+	<EditItem item={item}/>
 );
 
 const qrView = (item, setView) => (

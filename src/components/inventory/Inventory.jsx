@@ -9,9 +9,12 @@ import axios from 'axios'
 import SearchBar from '../search-bar/SearchBar.jsx'
 import Modal from '../modal/Modal.jsx'
 import Card from '../card/Card.jsx'
+import ItemPreview from './ItemPreview.jsx'
 
 const Inventory = () => {
 	const [ isToggleNewItem , setToggleNewItem ] = useState(false);
+	const [ isToggleItemPreview, setToggleItemPreview ] = useState(false);
+	const [ selectedItem, setSelectedItem ] = useState(null);
 	const [ itemImage, setItemImage ] = useState(null);
 	const [ itemName, setItemName] = useState('');
 	const [ itemDescription, setItemDescription ] = useState('');
@@ -92,6 +95,11 @@ const Inventory = () => {
   		}
 	}
 
+	const handlePreview = (item) => { 
+		setToggleItemPreview(true);
+		setSelectedItem(item);
+	}
+
 	return(
 		<main className={styles.inventory}>
 			<header className={styles.header}>                                      			
@@ -106,8 +114,7 @@ const Inventory = () => {
         			{color: Colors.primary_light,
         			fontFamily: 'Poppins, sans-serif',
 					letterSpacing: '1px'
-        			}
-        			}>
+        			}}>
        				Inventory
         		</h2>	
 				<button
@@ -165,8 +172,13 @@ const Inventory = () => {
 			</div>
 			<div className={styles.grid_container}>
 				{items.map((item) => (
-					<Card item={item} key={item.uuid} onClick={(e) => console.log('WIP item preview')}/>
+					<Card item={item} key={item.uuid} onClick={(e) => handlePreview(item)}/>
 				))}
+				{isToggleItemPreview && (
+					<Modal setModal={setToggleItemPreview}>				
+						<ItemPreview item={selectedItem} />
+                    </Modal>
+				)}
 			</div>
 		</main>
 	);

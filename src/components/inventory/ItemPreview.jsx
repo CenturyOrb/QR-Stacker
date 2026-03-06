@@ -1,41 +1,60 @@
+import { useState } from 'react'
 import styles from './itempreview.module.css'
 
 const ItemPreview = ({ item }) => {
+	const [ view, setView ] = useState('preview');
+	
     return (
         <div className={styles.preview_container}>
-            <div className={styles.preview_image}>
-                <img src={item.image} alt={item.name} />
-            </div>
-
-            <div className={styles.preview_info}>
-                <h2 className={styles.preview_name}>{item.name}</h2>
-
-				<p className={styles.preview_price}>				
-                    ${item.price.toFixed(2)}
-                </p>
-
-				<div className={styles.preview_description}>
-                    {item.description}
-                </div>
-
-				<p className={styles.preview_location}>
-	                Location: {item.location}
-                </p>
-			
-				<button onClick={() => console.log('WIP edit button')}>
-					Edit
-				</button>
-
-				<button onClick={() => console.log('WIP mark sold button')}>
-                	Mark Sold
-                </button>
-
-				<button onClick={() => console.log('WIP QR code button')}>
-					QR Code	
-				</button>
-            </div>
+			{view === 'preview' && previewView(item, setView)}
+			{view === 'edit' && editView(item)}
+			{view === 'qr' && qrView(item)}
         </div>
     );
 }
+
+const previewView = (item, setView) => (
+	<>
+	<div className={styles.preview_image}>
+        <img src={item.image} alt={item.name} />
+    </div>
+                                                              
+    <div className={styles.preview_info}>
+        <h2 className={styles.preview_name}>{item.name}</h2>
+                                                              
+    	<p className={styles.preview_price}>				
+            ${item.price.toFixed(2)}
+        </p>
+                                                              
+    	<div className={styles.preview_description}>
+            {item.description}
+        </div>
+                                                              
+    	<p className={styles.preview_location}>
+            Location: {item.location}
+        </p>
+    
+    	<button onClick={() => setView('edit')}>
+    		Edit
+    	</button>
+                                                              
+    	<button onClick={() => console.log('WIP Mark Sold')}>
+        	Mark Sold
+        </button>
+                                                              
+    	<button onClick={() => setView('qr')}>
+    		QR Code	
+    	</button>
+    </div>
+	</>
+);
+
+const editView = (item, setView) => (
+	<p>edit view</p>	
+);
+
+const qrView = (item, setView) => (
+	<p>qr view</p>
+);
 
 export default ItemPreview;

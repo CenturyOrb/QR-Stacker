@@ -1,10 +1,15 @@
-import { getAllItems, createItem, updateItem, deleteItem } from '../services/itemService.js'
+import { getAllItems, getItem, createItem, updateItem, deleteItem } from '../services/itemService.js'
 
 // status code reference: 
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status#successful_responses
 
 export async function getAllItemsHandler(req, res) { 
 	const result = await getAllItems(req.user);
+	res.status(200).json(result);
+}
+
+export async function getItemHandler(req, res) {
+	const result = await getItem(req.params.id);
 	res.status(200).json(result);
 }
 

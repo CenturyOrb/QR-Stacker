@@ -42,10 +42,6 @@ const previewView = (item, setView) => (
     	<button onClick={() => console.log('WIP Mark Sold')}>
         	Mark Sold
         </button>
-                                                              
-    	<button onClick={() => setView('qr')}>
-    		QR Code	
-    	</button>
     </div>
 	</>
 );

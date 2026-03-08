@@ -27,7 +27,8 @@ const EditItem = ({item}) => {
 	}
 
 	const handleSubmit = () => {
-		console.log(item.uuid);
+		console.log(`PUT request for: ${item.uuid}`);
+		// Send PUT request
 	}	
 
 	return (<>

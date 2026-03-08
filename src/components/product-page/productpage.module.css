@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+justify-content: center;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+  max-width: 480px; /* phone width */
+  margin: 0 auto;
+	color: black;
+
+  width: 100vw;
+	height: 100vh;
+}
+
+.image {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.price {
+  font-size: 1.2rem;
+  color: #2e7d32; /* green for price */
+  margin: 0;
+}
+
+.description {
+  font-size: 1rem;
+  color: #555;
+}
+
+.location {
+  font-size: 0.9rem;
+  color: #777;
+}

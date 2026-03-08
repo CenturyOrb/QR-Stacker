@@ -1,7 +1,11 @@
-import { getAll, create, update, remove } from '../repositories/itemRepo.js'
+import { getAll, get, create, update, remove } from '../repositories/itemRepo.js'
 
 export async function getAllItems(user) { 
 	return await getAll(user);
+}
+
+export async function getItem(uuid) { 
+	return await get(uuid);
 }
 
 export async function createItem(data, user, filename) { 

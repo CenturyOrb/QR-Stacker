@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import styles from './itempreview.module.css'
 import EditItem from './EditItem.jsx'
+import { QRCodeCanvas, QRCodeSVG } from 'qrcode.react';
 
 const ItemPreview = ({ item }) => {
 	const [ view, setView ] = useState('preview');
+	console.log(item);
 	
     return (
         <div className={styles.preview_container}>
@@ -42,6 +44,7 @@ const previewView = (item, setView) => (
     	<button onClick={() => console.log('WIP Mark Sold')}>
         	Mark Sold
         </button>
+		<QRCodeCanvas value={`http://localhost:5173/product/${item.uuid}`} />
     </div>
 	</>
 );

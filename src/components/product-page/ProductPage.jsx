@@ -10,11 +10,10 @@ const ProductPage = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get(`http://10.194.144.198:3000/api/item/${uuid}`);
+				const response = await axios.get(`http://localhost:3000/api/item/${uuid}`);
 				setItem(response.data);
 			} catch (err) { console.error(err); }
 		}
-
 		fetchData();
 	}, []);
 	

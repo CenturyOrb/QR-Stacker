@@ -8,7 +8,7 @@ import axios from 'axios'
 
 import SearchBar from '../search-bar/SearchBar.jsx'
 import Modal from '../modal/Modal.jsx'
-import Card from '../card/Card.jsx'
+import Table from '../table/Table.jsx'
 import ItemPreview from './ItemPreview.jsx'
 
 const Inventory = () => {
@@ -170,16 +170,12 @@ const Inventory = () => {
 				</Modal>
 			)}
 			</div>
-			<div className={styles.grid_container}>
-				{items.map((item) => (
-					<Card item={item} key={item.uuid} onClick={(e) => handlePreview(item)}/>
-				))}
+			<Table />
 				{isToggleItemPreview && (
 					<Modal setModal={setToggleItemPreview}>				
 						<ItemPreview item={selectedItem} />
                     </Modal>
 				)}
-			</div>
 		</main>
 	);
 }
